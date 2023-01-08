@@ -20,7 +20,7 @@ int main(int ac, char **av)
         std::string str;
         while (i <= ac - 1)
         {
-            upper_case(av[i]);
+           upper_case(av[i]);
             std::cout << ' ';
             if (i == ac - 1)
             {
