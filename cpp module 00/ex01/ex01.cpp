@@ -1,9 +1,10 @@
 #include <iostream>
 #include <iomanip>
 
+int i = 0;
+
 class Contact{
 	private :
-
 		std::string firstName, lastName, nickName;
 		int			phoneNumber;
 	public :
@@ -24,12 +25,20 @@ class Contact{
 		}
 };
 
-int i = 0;
-
 void putDot(std::string	str)
 {
 	if (str.length() > 10)
 		std::cout << ".";
+}
+
+void	colomsManager(std::string	str) {
+	if (str.length() >= 10)
+	{
+		std::cout << str.substr(0, 9);
+		putDot(str);
+	}
+	else
+		std::cout << std::setw(10) << str;
 }
 
 class PhoneBook{
@@ -47,15 +56,43 @@ class PhoneBook{
 			std::cin >> nickName;
 			std::cout << "Enter your phoneNumber : ";
 			std::cin >> phoneNumber;
+		
 			if (std::cin.fail())
 			{
 				std::cout << "should entre a number" << std::endl;
-				exit(0);
+				return ; // should not exit from the progam
 			}
 			cnt[i].setData(firstName, lastName, nickName, phoneNumber);
 			if (i == 7)
 				i = -1;
 			i++;
+		}
+
+		void	contactTable()
+		{
+			int it = 0;
+			std::cout << std::endl;
+			std::cout << std::setw(10) << "index ___ |";
+			std::cout << std::setw(10) << "first name";
+				std::cout << "|";
+			std::cout << std::setw(10) << "last name";
+				std::cout << "|";
+			std::cout << std::setw(10) << "nickname";
+				std::cout << "|" << std::endl;
+			while (8 > it)
+			{
+				std::cout << "____________________________________________" << std::endl;
+				std::cout << std::setw(10) << it;
+				std::cout << "|";
+				colomsManager(cnt[it].getFirstName());
+				std::cout << "|";
+				colomsManager(cnt[it].getLastName());
+				std::cout << "|";
+				colomsManager(cnt[it].getNeckNameName());
+				std::cout << "|"<< std::endl;
+				it++;
+			}
+			std::cout << "____________________________________________" << std::endl;
 		}
 
 		void getInfo(int index)
@@ -68,38 +105,37 @@ class PhoneBook{
 			putDot(cnt[index].getNeckNameName());
 			std::cout << "|" << std::endl;
 		}
-
 };
-
 
 int main()
 {
 	std::string		cmd;
 	PhoneBook		data;
-	int				i, index;
+	int				index;
 
-	i = 0;
+	std::cout << "====>  Enter a valid command [ADD, SEARCH, EXIT]" << std::endl;
 	while(true)
 	{
 		std::cin >> cmd;
-		if (cmd.compare("ADD") == 0)
+		if (cmd.compare("ADD") == 0){
 			data.fillClass();
-		if (cmd.compare("SEARCH") == 0)
+		}
+		else if (cmd.compare("SEARCH") == 0)
 		{
-
+			data.contactTable();
 			std::cout << "Enter The Index Of The Contact : ";
 			std::cin >> index;
-			if (std::cin.fail())
+			if (std::cin.fail() || index > 7 || index < 0)
 			{
-				std::cout << "should entre a number" << std::endl;
-				return (0);
+				std::cout << "should entre a number between 0 and 7" << std::endl;
+				exit(1); // should not quit the program
 			}
 			if (index <= 7)
 				data.getInfo(index);
-			else
-				std::cout << "max contact can store is 7" << std::endl;
 		}
-		if (cmd.compare("EXIT") == 0)
-			exit(0);
+		else if (cmd.compare("EXIT") == 0)
+			exit(1);
+		else
+			std::cout << "====>  Enter a valid command [ADD, SEARCH, EXIT]" << std::endl;
 	}
 }
