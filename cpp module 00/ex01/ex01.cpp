@@ -1,5 +1,8 @@
 #include <iostream>
+#include <sstream>
 #include <iomanip>
+#include <string>
+#include <ctype.h>
 
 int i = 0;
 
@@ -59,7 +62,8 @@ class PhoneBook{
 		
 			if (std::cin.fail())
 			{
-				std::cout << "should entre a number" << std::endl;
+				std::cout << std::endl << "should entre a number" << std::endl << std::endl;
+				std::cin.clear();
 				return ; // should not exit from the progam
 			}
 			cnt[i].setData(firstName, lastName, nickName, phoneNumber);
@@ -109,7 +113,7 @@ class PhoneBook{
 
 int main()
 {
-	std::string		cmd;
+	std::string		cmd, indexStr;
 	PhoneBook		data;
 	int				index;
 
@@ -127,10 +131,10 @@ int main()
 			std::cin >> index;
 			if (std::cin.fail() || index > 7 || index < 0)
 			{
-				std::cout << "should entre a number between 0 and 7" << std::endl;
-				exit(1); // should not quit the program
+				std::cout << std::endl << "should entre a number between 0 and 7" << std::endl << std::endl;
+				std::cin.clear();
 			}
-			if (index <= 7)
+			else if (index <= 7)
 				data.getInfo(index);
 		}
 		else if (cmd.compare("EXIT") == 0)

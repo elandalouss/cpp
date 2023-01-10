@@ -1,51 +1,40 @@
 #include <iostream>
 
-class Weapon {
-    private:
-        std::str    e;
-    public:
-        void    Weapon(std::string);
-        void    setType(std::string  sType)
-        {
-            type = sType;
+class Weapon{
+    private :
+        std::string type;
+    public :
+        void setType(std::string    weaponType) {
+            type = weaponType;
         }
-        std::string getType()
-        {
-            return type;
+
+        std::string getType() {
+            return (type);
         }
 };
 
 class HumanA {
-    std::string name;
-    Weapon      ObjA;
-    void    attack()
-    {
-        std::cout << name << " attacks with their " << "tmp" << std::endl;
-    }
+	private :
+		Weapon			&wpnA;
+		std::string		name;
+	public :
+		void attack() {
+			std::cout << name << " attacks with their " << wpnA.getType() << std::endl;
+		}
+		HumanA (std::string name, Weapon &wA){
+			this->name = name;
+			this->wpnA = wA; 
+		}
 };
 
 class HumanB {
-    std::string name;
-    Weapon      ObjB;
-    void    attack()
-    {
-        std::cout << name << " attacks with their " << "tmp" << std::endl;
-    }
+	private :
+		Weapon			wpnB;
+		std::string		name;
+	public :
+		void attack() {
+			std::cout << name << " attacks with their " << wpnB.getType() << std::endl;
+		}
+
 };
-
-int main()
-{
-    Weapon club = Weapon("crude spiked club");
-    HumanA bob("Bob", club);
-    bob.attack();
-    club.setType("some other type of club");
-    bob.attack();
-
-    Weapon club = Weapon("crude spiked club");
-    HumanB jim("Jim");
-    jim.setWeapon(club);
-    jim.attack();
-    club.setType("some other type of club");
-    jim.attack();
-    return 0;
-}
+ 

@@ -4,6 +4,9 @@ class Zombie{
     private:
         std::string	name;
     public:
+		~Zombie() {
+			std::cout << name << " has destroyed" << std::endl;
+		}
         void	announce(void){
 			std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 		}
@@ -36,17 +39,9 @@ Zombie* zombieHorde(int N, std::string name)
 int main()
 {
 	Zombie	*zombieObj;
-	std::string	name;
-	int	zombiesNumber;
 	
-	std::cout << "Enter the name of the zombies : ";
-	std::cin >> name;
-
-	std::cout << "Enter the number of the zombies : ";
-	std::cin >> zombiesNumber;
-
-	zombieObj = zombieHorde(zombiesNumber, name);
-	tester(zombieObj, zombiesNumber);
+	zombieObj = zombieHorde(8, "zombozo");
+	tester(zombieObj, 8);
 
 	delete[] zombieObj;
     return 0;

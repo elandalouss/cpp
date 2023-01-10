@@ -13,7 +13,7 @@ int main()
     std::cout << "\t" << "stringPTR :" << std::endl;
     std::cout << "\t\t" << &stringPTR << std::endl;
     std::cout << "\t" << "stringREF :" << std::endl;
-    std::cout << "\t\t" <<&stringREF << std::endl;
+    std::cout << "\t\t" << &stringREF << std::endl;
 
     std::cout << "=======================================" << std::endl;
     //The value

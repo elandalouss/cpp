@@ -15,6 +15,9 @@ class Zombie{
 		{
 			return (name);
 		}
+		~Zombie() {
+			std::cout << "the zombie " << name << " has destroyed" << std::endl;
+		}
 };
 
 Zombie* newZombie(std::string name)
@@ -33,33 +36,14 @@ void randomChump(std::string name)
 	miniZombie.setName(name);
 	miniZombie.announce();
 }
-// my main
 
 int main() {
 	Zombie *new_zombie;
-	std::string zombie_name;
 
-	std::cout << "enter the zombie name : ";
-	std::cin >> zombie_name;
-	new_zombie = newZombie(zombie_name);
+	new_zombie = newZombie("za3tot");
 	new_zombie->announce();
-	randomChump(zombie_name);
+	randomChump("za3tot a5or");
+
 	delete(new_zombie);
-	std::cout << "the zombie " << zombie_name << " has destroyed" << std::endl;
-	std::cout << "the zombie " << zombie_name << " has destroyed" << std::endl;
     return 0;
-}
-// laila's main
-
-int main()
-{
-
-  Zombie* zum = newZombie("alex");
-  zum->announce();
-  Zombie* z = newZombie("Foooo");
-  z->announce();
-  randomChump("laila");
-
-  delete zum;
-  delete z;
 }
