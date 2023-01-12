@@ -11,40 +11,39 @@ class Weapon{
         std::string getType() {
             return (type);
         }
-
-
+		Weapon (std::string typeName) {
+			type = typeName;
+		}
 };
 
 class HumanA {
 	private :
 		std::string		name;
-		Weapon			wpnA;
+		Weapon			&wpnA;
 	public :
 		void attack() {
 			std::cout << name << " attacks with their " << wpnA.getType() << std::endl;
 		}
-		HumanA (std::string name, Weapon &wA){
-			this->name = name;
-			this->wpnA = wA;
-		}
+		HumanA (std::string name, Weapon &wA) : name(name) , wpnA(wA){}
 };
 
 class HumanB {
 	private :
 		std::string		name;
-		Weapon			wpnB;
+		Weapon			*wpnB;
 	public :
-			HumanB (std::string name, Weapon &wB){
-			this->name = name;
-		}
 		void attack() {
-			std::cout << name << " attacks with their " << wpnB.getType() << std::endl;
+			std::cout << name << " attacks with their " << wpnB->getType() << std::endl;
 		}
-		void setWeapon(std::string	weapenSet) {
-			
+			HumanB (std::string name){
+			this->name = name;
+			this->wpnB = NULL;
+		}
+		void setWeapon(Weapon	&wpn) {
+			this->wpnB = &wpn;
 		}
 };
- 
+
 int main()
 {
 	{

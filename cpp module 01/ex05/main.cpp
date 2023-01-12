@@ -16,33 +16,37 @@ class Harl {
 	   }
 	public :
 		void complain(std::string level) {
-			int a = !level.compare("DEBUG");
-			a = (!level.compare("INFO")) * 10;
+
+            void (Harl::*func[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+			int a = 0;
+            a += !level.compare("DEBUG");
+			a += (!level.compare("INFO")) * 10;
 			a += (!level.compare("WARNING")) * 100;
 			a += (!level.compare("ERROR")) * 1000;
-			std::cout << std::endl << a << std::endl;
 			switch (a)
 			{
-			case 0:
-				this->debug();
-				break;
-			case 10:
-				this->info();
-				break;
-			case 100:
-			this->warning();
-				break;
-			case 1000:
-				this->error();
-				break;
-			}
-		}
+                case 1:
+                    (this->*func[0])();
+                    break;
+                case 10:
+                    (this->*func[1])();
+                    break;
+                case 100:
+                    (this->*func[2])();
+                    break;  
+                case 1000:
+                    (this->*func[3])();
+                    break;
+		    }
+        }
 };
 
 
-int main() {
+int main() { 
 	std::string	cmd;
 	Harl		obj1;
+
+    obj1.complain("hello");
 
 	while (true) {
 		std::cout << "Enter you're command please : ";
@@ -51,18 +55,9 @@ int main() {
 			std::cerr << "enter a valid command [DEBUG], [INFO], [WARNING], [ERROR]" << std::endl;
 			std::cin.clear();
 			return 0;
-		} else if (cmd.compare("DEBUG") == 0) {
-			obj1.complain(cmd);
-		} else if (cmd.compare("INFO") == 0) {
-			obj1.complain(cmd);
-		} else if (cmd.compare("WARNING") == 0) {
-			obj1.complain(cmd);
-		} else if (cmd.compare("ERROR") == 0) {
-			obj1.complain(cmd);
-		} else {
-			std::cout << "enter a valid command [DEBUG], [INFO], [WARNING], [ERROR]" << std::endl;
 		}
-	}
+        obj1.complain(cmd);
+    }
 
     return 0;
 }
