@@ -2,6 +2,7 @@
 #include <fstream>
 
 void    programFile (std::string filename, std::string s1, std::string s2) {
+
     std::string line, fileraplace = filename + ".raplace";
     std::fstream    fileOne;
 
@@ -19,15 +20,19 @@ void    programFile (std::string filename, std::string s1, std::string s2) {
         std::cerr << "failed to open file " << fileraplace << std::endl;
         return ;
     } else {
+        int position = 0;
+        std::size_t found = line.find(s1);
         while (getline (fileOne, line)) {
-            // std::cout << line << std::endl;
-            if (line.find(s1)) {
-                std::cout << "index" << std::endl;
+            found = line.find(s1, found+1);
+            while (found!=std::string::npos) {
+                line.erase(found, s1.length());
+                line.insert(found, s2);
+                found = line.find(s1, found+1);
             }
+            fileTwo << line << std::endl;
         }
     }
 }
 
 int main() {
     programFile("abc", "hello", "d");
-}
