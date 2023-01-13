@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 22:03:25 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 22:05:49 by aelandal         ###   ########.fr       */
+/*   Created: 2023/01/13 19:32:59 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/13 19:33:16 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.h"
+#include "Zombie.h"
 
-int main() {
-	std::string	cmd;
-	Harl		obj1;
+Zombie* zombieHorde(int N, std::string name)
+{
+    Zombie	*zombieObj;
 
-	while (true) {
-		std::cout << "Enter you're command please : ";
-		std::cin >> cmd;
-		if (std::cin.fail()) {
-			std::cerr << "enter a valid command [DEBUG], [INFO], [WARNING], [ERROR]" << std::endl;
-			std::cin.clear();
-			return 0;
-        }
-        obj1.complain(cmd);
-	}
-    return 0;
+	zombieObj = new Zombie [N];
+	for (int i = 0; i < N; i++)
+		zombieObj[i].setName(name);
+	return (zombieObj);
 }

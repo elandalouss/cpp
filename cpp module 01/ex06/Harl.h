@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 22:03:25 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 22:05:49 by aelandal         ###   ########.fr       */
+/*   Created: 2023/01/13 22:02:30 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/13 22:04:24 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.h"
+#ifndef HARL_H
+#define HARL_H
+#include <iostream>
 
-int main() {
-	std::string	cmd;
-	Harl		obj1;
+class Harl {
+    private :
+        void    debug(void);
+        void    info(void);
+        void    warning(void);
+        void    error(void);
+	public :
+		void    complain(std::string level);
+};
 
-	while (true) {
-		std::cout << "Enter you're command please : ";
-		std::cin >> cmd;
-		if (std::cin.fail()) {
-			std::cerr << "enter a valid command [DEBUG], [INFO], [WARNING], [ERROR]" << std::endl;
-			std::cin.clear();
-			return 0;
-        }
-        obj1.complain(cmd);
-	}
-    return 0;
-}
+#endif

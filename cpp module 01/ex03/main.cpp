@@ -1,48 +1,16 @@
-#include <iostream>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/13 20:06:19 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/13 20:06:19 by aelandal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-class Weapon{
-    private :
-        std::string type;
-    public :
-        void setType(std::string    weaponType) {
-            type = weaponType;
-        }
-
-        std::string getType() {
-            return (type);
-        }
-		Weapon (std::string typeName) {
-			type = typeName;
-		}
-};
-
-class HumanA {
-	private :
-		std::string		name;
-		Weapon			&wpnA;
-	public :
-		void attack() {
-			std::cout << name << " attacks with their " << wpnA.getType() << std::endl;
-		}
-		HumanA (std::string name, Weapon &wA) : name(name) , wpnA(wA){}
-};
-
-class HumanB {
-	private :
-		std::string		name;
-		Weapon			*wpnB;
-	public :
-		void attack() {
-			std::cout << name << " attacks with their " << wpnB->getType() << std::endl;
-		}
-			HumanB (std::string name){
-			this->name = name;
-			this->wpnB = NULL;
-		}
-		void setWeapon(Weapon	&wpn) {
-			this->wpnB = &wpn;
-		}
-};
+#include "Weapon.h"
 
 int main()
 {

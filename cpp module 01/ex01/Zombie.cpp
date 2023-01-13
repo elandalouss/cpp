@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 22:03:25 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 22:05:49 by aelandal         ###   ########.fr       */
+/*   Created: 2023/01/13 19:30:27 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/13 19:32:13 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.h"
+#include "Zombie.h"
 
-int main() {
-	std::string	cmd;
-	Harl		obj1;
+Zombie::~Zombie() {
+    std::cout << name << " has destroyed" << std::endl;
+}
 
-	while (true) {
-		std::cout << "Enter you're command please : ";
-		std::cin >> cmd;
-		if (std::cin.fail()) {
-			std::cerr << "enter a valid command [DEBUG], [INFO], [WARNING], [ERROR]" << std::endl;
-			std::cin.clear();
-			return 0;
-        }
-        obj1.complain(cmd);
-	}
-    return 0;
+void	Zombie::announce(void) {
+    std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+void Zombie::setName(std::string tmp_name) {
+    name = tmp_name;
+}
+
+std::string Zombie::getName() {
+    return (name);
 }

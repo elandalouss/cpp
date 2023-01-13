@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 22:03:25 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 22:05:49 by aelandal         ###   ########.fr       */
+/*   Created: 2023/01/13 20:04:05 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/13 20:07:26 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.h"
+#ifndef WEAPEN_H
+#define WEAPEN_H
+#include <iostream>
+#include "HumanA.h"
+#include "HumanB.h"
 
-int main() {
-	std::string	cmd;
-	Harl		obj1;
+class Weapon{
+    private :
+        std::string type;
+    public :
+        void        setType(std::string    weaponType);
+        std::string getType();
+		Weapon      (std::string typeName);
+};
 
-	while (true) {
-		std::cout << "Enter you're command please : ";
-		std::cin >> cmd;
-		if (std::cin.fail()) {
-			std::cerr << "enter a valid command [DEBUG], [INFO], [WARNING], [ERROR]" << std::endl;
-			std::cin.clear();
-			return 0;
-        }
-        obj1.complain(cmd);
-	}
-    return 0;
-}
+#endif

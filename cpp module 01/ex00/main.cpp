@@ -1,41 +1,16 @@
-#include <iostream>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/13 19:07:01 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/13 19:07:01 by aelandal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-class Zombie{
-    private:
-        std::string	name;
-    public:
-        void	announce(void){
-			std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-		}
-		void setName(std::string tmp_name)
-		{
-			name = tmp_name;
-		}
-		std::string getName()
-		{
-			return (name);
-		}
-		~Zombie() {
-			std::cout << "the zombie " << name << " has destroyed" << std::endl;
-		}
-};
-
-Zombie* newZombie(std::string name)
-{
-	Zombie	*minizombie;
-
-	minizombie = new Zombie();
-	minizombie->setName(name);
-	return minizombie;
-}
-
-void randomChump(std::string name)
-{
-	Zombie	miniZombie;
-
-	miniZombie.setName(name);
-	miniZombie.announce();
-}
+#include "Zombie.hpp"
 
 int main() {
 	Zombie *new_zombie;

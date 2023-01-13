@@ -1,38 +1,20 @@
-#include <iostream>
-#include <fstream>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/13 20:37:13 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/13 20:37:13 by aelandal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    programFile (std::string filename, std::string s1, std::string s2) {
+#include "funcFile.h"
 
-    std::string line, fileraplace = filename + ".raplace";
-    std::fstream    fileOne;
-
-
-    fileOne.open(filename, std::ifstream::in);
-    if (!fileOne.is_open())
-    {
-        std::cerr << "failed to open file " << filename << std::endl;
-        return ;
+int main(int ac, char **av) {
+    if (ac != 4) {
+        std::cerr << " ===>  check you're paramters [filename], [s1], [s2]" << std::endl;
+        return 0; 
     }
-
-    std::ofstream   fileTwo(fileraplace, std::ofstream::trunc);
-    if (!fileTwo.is_open())
-    {
-        std::cerr << "failed to open file " << fileraplace << std::endl;
-        return ;
-    } else {
-        int position = 0;
-        std::size_t found = line.find(s1);
-        while (getline (fileOne, line)) {
-            found = line.find(s1, found+1);
-            while (found!=std::string::npos) {
-                line.erase(found, s1.length());
-                line.insert(found, s2);
-                found = line.find(s1, found+1);
-            }
-            fileTwo << line << std::endl;
-        }
-    }
-}
-
-int main() {
-    programFile("abc", "hello", "d");
+    programFile(av[1], av[2], av[3]);}

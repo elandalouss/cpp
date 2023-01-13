@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 22:03:25 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 22:05:49 by aelandal         ###   ########.fr       */
+/*   Created: 2023/01/13 20:00:59 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/13 20:13:27 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.h"
+#ifndef HUMANA_H
+#define HUMANA_H
 
-int main() {
-	std::string	cmd;
-	Harl		obj1;
+class HumanA {
+	private :
+		std::string		name;
+		Weapon			&wpnA;
+	public :
+		void    attack();
+		HumanA  (std::string name, Weapon &wA) : name(name) , wpnA(wA);
+};
 
-	while (true) {
-		std::cout << "Enter you're command please : ";
-		std::cin >> cmd;
-		if (std::cin.fail()) {
-			std::cerr << "enter a valid command [DEBUG], [INFO], [WARNING], [ERROR]" << std::endl;
-			std::cin.clear();
-			return 0;
-        }
-        obj1.complain(cmd);
-	}
-    return 0;
-}
+#endif

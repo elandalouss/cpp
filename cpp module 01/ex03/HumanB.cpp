@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 22:03:25 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 22:05:49 by aelandal         ###   ########.fr       */
+/*   Created: 2023/01/13 20:14:45 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/13 20:17:24 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.h"
+#include "Weapon.h"
 
-int main() {
-	std::string	cmd;
-	Harl		obj1;
+void HumanB::attack() {
+    std::cout << name << " attacks with their " << wpnB->getType() << std::endl;
+}
 
-	while (true) {
-		std::cout << "Enter you're command please : ";
-		std::cin >> cmd;
-		if (std::cin.fail()) {
-			std::cerr << "enter a valid command [DEBUG], [INFO], [WARNING], [ERROR]" << std::endl;
-			std::cin.clear();
-			return 0;
-        }
-        obj1.complain(cmd);
-	}
-    return 0;
+HumanB::HumanB (std::string name){
+    this->name = name;
+    this->wpnB = NULL;
+}
+
+void HumanB::setWeapon(Weapon	&wpn) {
+    this->wpnB = &wpn;
 }

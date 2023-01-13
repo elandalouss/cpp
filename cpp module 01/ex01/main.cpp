@@ -1,39 +1,21 @@
-#include <iostream>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/13 19:29:13 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/13 19:29:13 by aelandal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-class Zombie{
-    private:
-        std::string	name;
-    public:
-		~Zombie() {
-			std::cout << name << " has destroyed" << std::endl;
-		}
-        void	announce(void){
-			std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-		}
-		void setName(std::string tmp_name)
-		{
-			name = tmp_name;
-		}
-		std::string getName()
-		{
-			return (name);
-		}
-};
+#include "Zombie.h"
 
 void tester(Zombie	*zombieObj, int N)
 {
 	for (int i = 0; i < N; i++)
 		zombieObj[i].announce();
-}
-
-Zombie* zombieHorde(int N, std::string name)
-{
-    Zombie	*zombieObj;
-
-	zombieObj = new Zombie [N];
-	for (int i = 0; i < N; i++)
-		zombieObj[i].setName(name);
-	return (zombieObj);
 }
 
 int main()
