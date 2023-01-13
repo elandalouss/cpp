@@ -6,17 +6,14 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:17:11 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 18:13:08 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/13 19:04:02 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_H
 #define PHONEBOOK_H
 #include <iostream>
-#include <sstream>
 #include <iomanip>
-#include <string>
-#include <ctype.h>
 
 class Contact{
 	private :
