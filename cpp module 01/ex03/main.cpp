@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "Weapon.h"
+#include "HumanA.h"
+#include "HumanB.h"
 
 int main()
 {

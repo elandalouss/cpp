@@ -6,11 +6,11 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:14:45 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 20:17:24 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/13 23:29:12 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.h"
+#include "HumanB.h"
 
 void HumanB::attack() {
     std::cout << name << " attacks with their " << wpnB->getType() << std::endl;
