@@ -1,6 +1,10 @@
-NAME = Megaphone
+NAME = phonebook
 
-SRCS =  megaphone.cpp
+SRCS =  main.cpp \
+		C-C-init.cpp \
+		C-PB-init.cpp \
+		initFunction.cpp 
+
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
