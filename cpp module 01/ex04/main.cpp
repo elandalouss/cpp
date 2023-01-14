@@ -17,4 +17,5 @@ int main(int ac, char **av) {
         std::cerr << " ===>  check you're paramters [filename], [s1], [s2]" << std::endl;
         return 0; 
     }
-    programFile(av[1], av[2], av[3]);}
+    programFile(av[1], av[2], av[3]);
+}

@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:36:56 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 20:37:07 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/14 15:15:32 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ void    programFile (std::string filename, std::string s1, std::string s2) {
         int position = 0;
         std::size_t found = line.find(s1);
         while (getline (fileOne, line)) {
-            found = line.find(s1, found+1);
+            found = line.find(s1, found + 1);
             while (found!=std::string::npos) {
                 line.erase(found, s1.length());
                 line.insert(found, s2);
-                found = line.find(s1, found+1);
+                found = line.find(s1, found + s2.length());
             }
             fileTwo << line << std::endl;
         }
