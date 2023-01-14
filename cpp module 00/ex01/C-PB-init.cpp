@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:39:28 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 18:52:34 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/14 16:21:09 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,34 @@ void PhoneBook::fillClass() {
     int	phoneNumber;
     std::cout << "Enter your firstName : ";
     getline(std::cin, firstName);
+    while (firstName.length() == 0){
+        std::cout << "Enter your firstName : ";
+        getline(std::cin, firstName);
+    }
+
+
     std::cout << "Enter your lastName : ";
     getline(std::cin, lastName);
+    while (lastName.length() == 0) {
+        std::cout << "Enter your lastName : ";
+        getline(std::cin, lastName);
+    }
+
+        
     std::cout << "Enter your nickName : ";
     getline(std::cin, nickName);
+    while (nickName.length() == 0) {
+        std::cout << "Enter your nickName : ";
+        getline(std::cin, nickName);    
+    }
+
+        
     std::cout << "Enter your darkest secret : ";
     getline(std::cin, darkestSecret);
+    while (darkestSecret.length() == 0) {
+        std::cout << "Enter your darkest secret : ";
+        getline(std::cin, darkestSecret);
+    }
     std::cout << "Enter your phoneNumber : ";
     std::cin >> phoneNumber;
 

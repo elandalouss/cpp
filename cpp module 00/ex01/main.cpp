@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:09:03 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/14 15:24:51 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/14 16:15:04 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main()
 	PhoneBook		data;
 	int				index;
 
-	std::cout << "====>  Enter a valid command [ADD, SEARCH, EXIT]" << std::endl;
+	std::cout << std::endl << "====>  Enter a valid command [ADD, SEARCH, EXIT]" << std::endl;
 	while(true)
 	{
 		getline(std::cin, cmd);
@@ -42,6 +42,6 @@ int main()
 		else if (cmd.compare("EXIT") == 0)
 			exit(1);
 		else
-			std::cout << "====>  Enter a valid command [ADD, SEARCH, EXIT]" << std::endl;
+			std::cout << std::endl << "====>  Enter a valid command [ADD, SEARCH, EXIT]" << std::endl;
 	}
 }
