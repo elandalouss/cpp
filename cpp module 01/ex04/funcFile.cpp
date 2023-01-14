@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:36:56 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/14 15:15:32 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/14 18:12:35 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void    programFile (std::string filename, std::string s1, std::string s2) {
 
-    std::string line, fileraplace = filename + ".raplace";
+    std::string line, filereplace = filename + ".replace";
     std::fstream    fileOne;
 
 
     fileOne.open(filename, std::ifstream::in);
     if (!fileOne.is_open())
     {
-        std::cerr << "failed to open file" << filename << std::endl;
+        std::cerr << "failed to open file " << filename << std::endl;
         return ;
     }
 
-    std::ofstream   fileTwo(fileraplace, std::ofstream::trunc);
+    std::ofstream   fileTwo(filereplace, std::ofstream::trunc);
     if (!fileTwo.is_open())
     {
-        std::cerr << "failed to open file " << fileraplace << std::endl;
+        std::cerr << "failed to open file " << filereplace << std::endl;
         return ;
     } else {
         int position = 0;

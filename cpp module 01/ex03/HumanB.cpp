@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:14:45 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/14 14:06:30 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/14 17:52:40 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,5 @@ HumanB::HumanB (std::string name){
 void HumanB::setWeapon(Weapon	&wpn) {
     this->wpnB = &wpn;
 }
+
+HumanB::~HumanB() {}

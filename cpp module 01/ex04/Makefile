@@ -9,7 +9,7 @@ CC = c++
 
 CFLAGS = -Werror -Wall -Wextra -std=c++98
 
-RM = rm -f
+RM = rm -rf
 
 all:	$(NAME)
 
@@ -20,6 +20,6 @@ clean:
 		$(RM) $(OBJS)
 
 fclean:	clean
-		$(RM) $(NAME)
+		$(RM) $(NAME) *.replace
 
 re:	fclean all

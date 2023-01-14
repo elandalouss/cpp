@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:03:53 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/14 14:06:27 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/14 17:52:22 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class HumanB {
 		void    attack();
 		void    setWeapon(Weapon	&wpn);
         HumanB  (std::string name);
+		~HumanB ();
 };
 
 #endif
