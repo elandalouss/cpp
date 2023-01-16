@@ -19,19 +19,21 @@ Fixed & Fixed::operator=(const Fixed& other) {
 }
 
 Fixed::Fixed (const int num) {
-    // new
+    fixedValue = num << fractionalBits;
 };
 
 Fixed::Fixed (const float fnum) {
-    // new
+    float x = fnum * 256;
+    fixedValue = x;
 };
 
 Fixed::~Fixed() {
     std::cout << "destructor has called" << std::endl;
 };
+
 int Fixed::getRawBits(void) const{
     std::cout << "getRawBits member function called" << std::endl;
-    return (fixedValue);
+    return (this->fixedValue);
 };
 
 void Fixed::setRawBits(int const raw) {
@@ -39,9 +41,16 @@ void Fixed::setRawBits(int const raw) {
 };
 
 float Fixed::toFloat(void) const {
-    // new 
+    float x = roundf(fixedValue);
+    return (x / (1 << fractionalBits));
 };
 
 int Fixed::toInt(void) const {
-    // new
+    return (fixedValue >> fractionalBits);
 };
+
+std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
+    float x = roundf(obj.getRawBits());
+    os << (x / (1 << 8));
+    return os;
+}
