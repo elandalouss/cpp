@@ -117,23 +117,23 @@ Fixed Fixed::operator--(int) {
    return temp;
 };
 
-int& Fixed::min(int &obj1, int &obj2) {
-    if (obj1 > obj2)
-        return obj2;
-    else
-        return obj1;
-}
-
-int& Fixed::max(int &obj1, int &obj2) {
-    if (obj1 < obj2)
-        return obj2;
-    else
-        return obj1;
-}
-
-// int& Fixed::_min(const int &num1, const int &num2) {
+// int& Fixed::min(int &num1, int &num2) {
 //     if (num1 > num2)
-//         return &num2;
+//         return num2;
 //     else
-//         return &num1;
+//         return num1;
 // }
+
+// int& Fixed::max(int &obj1, int &obj2) {
+//     if (obj1.fixedValue < obj2.fixedValue)
+//         return obj2.fixedValue;
+//     else
+//         return obj1.fixedValue;
+// }
+
+// // int& Fixed::_min(const int &num1, const int &num2) {
+// //     if (num1 > num2)
+// //         return &num2;
+// //     else
+// //         return &num1;
+// // }

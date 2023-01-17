@@ -41,8 +41,8 @@ class Fixed {
             // functions
         float toFloat(void) const;
         int toInt(void) const;
-        int& min(int &num1, int &num2);
-        int& max(int &obj1, int &obj2);
+        // int& min(int &num1, int &num2);
+        // int& max(int &obj1, int &obj2);
         // int& min(const int &num1, const int &num2);
 };
 
