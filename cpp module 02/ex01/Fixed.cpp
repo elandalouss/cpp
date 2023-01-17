@@ -24,7 +24,7 @@ Fixed::Fixed (const int num) {
 
 Fixed::Fixed (const float fnum) {
     float x = fnum * 256;
-    fixedValue = x;
+    fixedValue = x; 
 };
 
 Fixed::~Fixed() {
@@ -50,7 +50,6 @@ int Fixed::toInt(void) const {
 };
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
-    float x = roundf(obj.getRawBits());
-    os << (x / (1 << 8));
+    os << obj.toFloat();
     return os;
 }
