@@ -17,9 +17,10 @@ class ClapTrap {
         ClapTrap(std::string Name);
         ~ClapTrap();
             // getter & setter
-        int getHitPoints();
-        int getEnergyPoints();
-        int getAttackDamage();
+        std::string getName();
+        int         getHitPoints();
+        int         getEnergyPoints();
+        int         getAttackDamage();
 };
 
 #endif
