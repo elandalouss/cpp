@@ -22,6 +22,9 @@ void ClapTrap::beRepaired(unsigned int amount) {
     }
 };
 
+
+// definition of getters && setters
+
 void ClapTrap::setName (std::string Name) {
     this->name = Name;
 };
@@ -42,17 +45,17 @@ int ClapTrap::getAttackDamage() {
     return (this->AttackDamage);
 }
 
-//defenition of constructor and destructor
+//defenition of constructors and destructor
 
 ClapTrap::ClapTrap() {
-    std::cout << "default constructor called" << std::endl;
+    std::cout << "Default constructor from ClapTrap called" << std::endl;
     this->HitPoints = 10;
     this->EnergyPoints = 10;
     this->AttackDamage = 0;
 };
 
 ClapTrap::ClapTrap(std::string Name) {
-    std::cout << "constructor called" << std::endl;
+    std::cout << "Parameterized constructor from ClapTrap called" << std::endl;
     this->name = Name;
     this->HitPoints = 10;
     this->EnergyPoints = 10;
@@ -60,7 +63,7 @@ ClapTrap::ClapTrap(std::string Name) {
 };
 
 ClapTrap::ClapTrap(const ClapTrap &obj) {
-    std::cout << "copy constructor called" << std::endl;    
+    std::cout << "Copy constructor from ClapTrap called" << std::endl;    
     this->name = obj.name;
     this->AttackDamage = obj.AttackDamage;
     this->HitPoints = obj.HitPoints;
@@ -68,7 +71,7 @@ ClapTrap::ClapTrap(const ClapTrap &obj) {
 };
 
 ClapTrap &ClapTrap::operator=(const ClapTrap& other) {
-    std::cout << "copy assainement operator called" << std::endl;
+    std::cout << "Copy assainement operator from ClapTrap called" << std::endl;
     if (this == &other)
         return *this;
     this->name = other.name;
@@ -79,5 +82,5 @@ ClapTrap &ClapTrap::operator=(const ClapTrap& other) {
 };
 
 ClapTrap::~ClapTrap() {
-    std::cout << "destructor called" << std::endl;
+    std::cout << "Destructor from ClapTrap called" << std::endl;
 };

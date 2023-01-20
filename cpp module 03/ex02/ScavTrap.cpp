@@ -1,19 +1,20 @@
 #include "ScavTrap.hpp"
 
-//definition of member functions
-
-void ScavTrap::guardGate() {
-    std::cout << "ScavTrap is now in gate keeper mode." << std::endl;
-};
+// definition of member function
 
 void ScavTrap::attack (const std::string &target) {
+    std::cout << "Copy assainement operator from ScavTrap called" << std::endl;
     if (getEnergyPoints() != 0) {
         std::cout << std::endl << "ScavTrap " << name <<  " attacks "<< target << ", causing " << AttackDamage <<  " points of damage" << std::endl;
         this->EnergyPoints--;
     }
 };
 
-// definition of constructors and destructor
+void ScavTrap::guardGate() {
+    std::cout << "ScavTrap is now in gate keeper mode." << std::endl;
+};
+
+// definition of constructors and distructor
 
 ScavTrap::ScavTrap() {
     std::cout << "Default constructor from ScavTrap called" << std::endl;
@@ -31,6 +32,13 @@ ScavTrap::ScavTrap(std::string Name) {
     this->AttackDamage = 20;
 };
 
+ScavTrap::ScavTrap(const ScavTrap& obj) {
+    std::cout << "Copy constructor from ScavTrap called" << std::endl;
+    this->AttackDamage = obj.AttackDamage;
+    this->EnergyPoints = obj.EnergyPoints;
+    this->HitPoints = obj.HitPoints;
+}
+
 ScavTrap &ScavTrap::operator=(const ScavTrap& other) {
     std::cout << "Copy assainement operator from ScavTrap called" << std::endl;
     if (this == &other)
@@ -41,13 +49,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap& other) {
     return *this;
 };
 
-ScavTrap::ScavTrap(const ScavTrap& obj) {
-    std::cout << "Copy constructor from ScavTrap called" << std::endl;
-    this->AttackDamage = obj.AttackDamage;
-    this->EnergyPoints = obj.EnergyPoints;
-    this->HitPoints = obj.HitPoints;
-};
 
-ScavTrap::~ScavTrap () {
-    std::cout << "Destructor from ScavTrap called" << std::endl;  
+ScavTrap::~ScavTrap() {
+    std::cout << "Distructor from ScavTrap called" << std::endl;
 };

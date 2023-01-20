@@ -22,7 +22,11 @@ void ClapTrap::beRepaired(unsigned int amount) {
     }
 };
 
-//definition of getters
+// definition from getters and setters
+
+void ClapTrap::setName (std::string Name) {
+    this->name = Name;
+};
 
 std::string ClapTrap::getName() {
     return (this->name);
@@ -40,8 +44,7 @@ int ClapTrap::getAttackDamage() {
     return (this->AttackDamage);
 }
 
-//defenition of constructor and destructor
-
+//defenition of constructors and destructor
 
 ClapTrap::ClapTrap() {
     std::cout << "Default constructor from ClapTrap called" << std::endl;
