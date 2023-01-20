@@ -42,9 +42,9 @@ int ClapTrap::getAttackDamage() {
 
 ClapTrap::ClapTrap() {
     std::cout << "default constructor called" << std::endl;
-    this->HitPoints = 100;
-    this->EnergyPoints = 50;
-    this->AttackDamage = 20;
+    this->HitPoints = 10;
+    this->EnergyPoints = 10;
+    this->AttackDamage = 0;
 };
 
 ClapTrap::ClapTrap(std::string Name) {
