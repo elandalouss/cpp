@@ -1,9 +1,11 @@
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main () {
     ClapTrap    obj("ana");
-    ClapTrap    obj2("target");
+    ClapTrap    obj2(obj);
 
+    obj2.setName("target");
     obj.attack(obj2.getName());
 
     std::cout << "===== " << obj.getName() << " =====" << std::endl << std::endl;;
@@ -29,6 +31,11 @@ int main () {
     std::cout << "HitPoints : " << obj.getHitPoints() << std::endl;
     std::cout << "EnergyPoints : " << obj.getEnergyPoints() << std::endl;
     std::cout << "AttackDamage : " << obj.getAttackDamage() << std::endl;
+
+    ScavTrap obj3("heeeeerroooooo");
+
+    obj3.attack(obj.getName());
+
 
     return 0;
 }

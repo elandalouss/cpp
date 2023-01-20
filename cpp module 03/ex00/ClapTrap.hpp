@@ -16,6 +16,8 @@ class ClapTrap {
             // constructor and destructor
         ClapTrap();
         ClapTrap(std::string Name);
+        ClapTrap(const ClapTrap &obj);
+        ClapTrap &operator=(const ClapTrap& other);
         ~ClapTrap();
             // getter & setter
         std::string getName();

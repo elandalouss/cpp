@@ -4,7 +4,7 @@
 
 void ClapTrap::attack(const std::string& target) {
     if (getEnergyPoints() != 0) {
-        std::cout << std::endl << "ClapTrap " << name <<  " attacks"<< target << ", causing " << AttackDamage <<  " points of damage" << std::endl;
+        std::cout << std::endl << "ClapTrap " << name <<  " attacks "<< target << ", causing " << AttackDamage <<  " points of damage" << std::endl;
         this->EnergyPoints--;
     }
 };
@@ -52,6 +52,26 @@ ClapTrap::ClapTrap(std::string Name) {
     std::cout << "copy constructor called" << std::endl;
     this->name = Name;
 };
+
+ClapTrap::ClapTrap(const ClapTrap &obj) {
+    std::cout << "copy constructor called" << std::endl;    
+    this->name = obj.name;
+    this->AttackDamage = obj.AttackDamage;
+    this->HitPoints = obj.HitPoints;
+    this->EnergyPoints = obj.EnergyPoints;
+};
+
+ClapTrap &ClapTrap::operator=(const ClapTrap& other) {
+    std::cout << "copy assainement operator called" << std::endl;
+    if (this == &other)
+        return *this;
+    this->name = other.name;
+    this->AttackDamage = other.AttackDamage;
+    this->EnergyPoints = other.EnergyPoints;
+    this->HitPoints = other.HitPoints;
+    return *this;
+};
+
 
 ClapTrap::~ClapTrap() {
     std::cout << "destructor called" << std::endl;
