@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 22:03:25 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 22:05:49 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:28:43 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main() {
 	while (true) {
 		std::cout << "Enter you're command please : ";
 		std::cin >> cmd;
-		if (std::cin.fail()) {
+		if (std::cin.eof()) {
 			std::cerr << "enter a valid command [DEBUG], [INFO], [WARNING], [ERROR]" << std::endl;
 			std::cin.clear();
 			return 0;

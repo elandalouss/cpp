@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:02:02 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 17:02:03 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:17:15 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int main(int ac, char **av)
         while (i <= ac - 1)
         {
            upper_case(av[i]);
-            std::cout << ' ';
             if (i == ac - 1)
             {
                 std::cout << std::endl;

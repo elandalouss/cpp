@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:17:11 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 19:04:02 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:46:34 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@
 
 class Contact{
 	private :
-		int         phoneNumber;
+		int			phoneNumber;
 		std::string firstName;
         std::string lastName;
         std::string nickName;
         std::string darkestSecret;
 	public :
-		void	setData(std::string fn, std::string ln, std::string nn, int phNbr);
+		void	setData(std::string fn, std::string ln, std::string nn, int phNbr, std::string ds);
 		std::string	getFirstName();
 		std::string	getLastName();
 		std::string	getNeckNameName();
+		std::string	getDarkestSecret();
+		int 		getPhoneNumber();
 };
 
 class PhoneBook{
@@ -40,5 +42,6 @@ class PhoneBook{
 
 void    putDot(std::string	str);
 void    colomsManager(std::string	str);
+void 	checkIndex(PhoneBook &data, int index);
 
 #endif

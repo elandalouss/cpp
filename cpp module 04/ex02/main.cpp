@@ -4,7 +4,6 @@ int main()
 {
 	Dog a;
 	Cat b;
-
 	a.makeSound();
 	b.makeSound();
 }

@@ -9,7 +9,7 @@ int main() {
 	while (true) {
 		std::cout << "Enter you're command please : ";
 		std::cin >> cmd;
-		if (std::cin.fail()) {
+		if (std::cin.eof()) {
 			std::cerr << "enter a valid command [DEBUG], [INFO], [WARNING], [ERROR]" << std::endl;
 			std::cin.clear();
 			return 0;
