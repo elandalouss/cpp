@@ -8,11 +8,10 @@ int main() {
 
 	while (true) {
 		std::cout << "Enter you're command please : ";
-		std::cin >> cmd;
-		if (std::cin.eof()) {
-			std::cerr << "enter a valid command [DEBUG], [INFO], [WARNING], [ERROR]" << std::endl;
-			std::cin.clear();
-			return 0;
+		getline(std::cin, cmd);
+		while (cmd.length() == 0) {
+			std::cout << "Enter you're command please : ";
+			getline(std::cin, cmd);
 		}
         obj1.complain(cmd);
     }

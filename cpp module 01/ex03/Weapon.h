@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:04:05 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/14 19:20:50 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:46:29 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 #define WEAPEN_H
 #include <iostream>
 
-
-
-class Weapon{
+class Weapon {
     private :
         std::string type;
     public :
-        void                setType(std::string    weaponType);
+		Weapon(std::string  typeName);
         const std::string&  getType();
-		Weapon(std::string typeName);
+        void                setType(std::string weaponType);
 		~Weapon();
 };
 

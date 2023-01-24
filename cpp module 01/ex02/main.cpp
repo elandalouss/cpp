@@ -16,7 +16,6 @@ int main()
     std::cout << "\t\t" << &stringREF << std::endl;
 
     std::cout << "=======================================" << std::endl;
-    //The value
 
     std::cout << "The value of:" << std::endl;
     std::cout << "\t" << "string :" << std::endl;
