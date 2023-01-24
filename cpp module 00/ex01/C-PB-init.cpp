@@ -6,13 +6,14 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:39:28 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/23 20:03:14 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:13:14 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phoneBook.h"
 
 int g_i = 0;
+int g_j = 0;
 
 
 void PhoneBook::fillClass() {
@@ -68,8 +69,9 @@ void PhoneBook::fillClass() {
     cnt[g_i].setData(firstName, lastName, nickName, phoneNumber, darkestSecret);
     if (g_i == 7)
         g_i = -1;
+    if (g_j < 8)
+        g_j++;
     g_i++;
-    // std::cin.ignore();
 }
 
 void	PhoneBook::contactTable() {
@@ -98,9 +100,7 @@ void	PhoneBook::contactTable() {
 }
 
 void PhoneBook::getInfo(int index) {
-    if (g_i >= index) {
-        std::cout << "INDEX = " << index << std::endl;
-        std::cout << "I = "<< g_i << std::endl;
+    if (g_j > index) {
         std::cout << "index : " << index << std::endl;
         std::cout << "first name : " << cnt[index].getFirstName() << std::endl;;
         std::cout << "last name : " << cnt[index].getLastName() << std::endl;

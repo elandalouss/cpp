@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:09:03 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/23 19:46:40 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:50:08 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int main()
 			data.contactTable();
 			std::cout << "Enter The Index Of The Contact : ";
 			std::cin >> index;
+			if (std::cin.eof()) exit (3);
 			checkIndex(data, index);
 		}
 		else if (cmd.compare("EXIT") == 0 || std::cin.eof())

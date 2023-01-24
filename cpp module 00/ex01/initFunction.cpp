@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:44:51 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/23 19:56:10 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:50:57 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	colomsManager(std::string	str) {
 }
 
 void checkIndex(PhoneBook &data, int index) {
-	if (std::cin.eof() || index < 0) {
+	if (std::cin.fail() || std::cin.eof() || index < 0 || index > 7) {
 		std::cout << std::endl << "Enter a number between 0 and 7" << std::endl << std::endl;
 		std::cin.clear();
 	}
