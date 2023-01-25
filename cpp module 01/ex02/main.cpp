@@ -11,7 +11,7 @@ int main()
     std::cout << "\t" << "string :" << std::endl;
     std::cout << "\t\t" << &str << std::endl;
     std::cout << "\t" << "stringPTR :" << std::endl;
-    std::cout << "\t\t" << &stringPTR << std::endl;
+    std::cout << "\t\t" << stringPTR << std::endl;
     std::cout << "\t" << "stringREF :" << std::endl;
     std::cout << "\t\t" << &stringREF << std::endl;
 
@@ -24,5 +24,4 @@ int main()
     std::cout << "\t\t" << *stringPTR << std::endl;
     std::cout << "\t" << "stringREF :" << std::endl;
     std::cout << "\t\t" << stringREF << std::endl;
-
 }

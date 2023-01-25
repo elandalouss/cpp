@@ -18,7 +18,6 @@ int main() {
 	new_zombie = newZombie("za3tot");
 	new_zombie->announce();
 	randomChump("za3tot a5or");
-
 	delete(new_zombie);
     return 0;
 }

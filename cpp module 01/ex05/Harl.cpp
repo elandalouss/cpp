@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:56:42 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 22:00:31 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:43:43 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,10 @@ void Harl::error(void) {
 void Harl::complain(std::string level) {
 
     void (Harl::*func[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-    int a = 0;
-    a += !level.compare("DEBUG");
-    a += (!level.compare("INFO")) * 10;
-    a += (!level.compare("WARNING")) * 100;
-    a += (!level.compare("ERROR")) * 1000;
-    switch (a)
-    {
-        case 1:
-            (this->*func[0])();
-            break;
-        case 10:
-            (this->*func[1])();
-            break;
-        case 100:
-            (this->*func[2])();
-            break;  
-        case 1000:
-            (this->*func[3])();
-            break;
+    std::string funcName[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    for (int i = 0; i <= 4; i++) {
+        if (funcName[i].compare(level) == 0) {
+            (this->*func[i])();
+        }
     }
 }
