@@ -22,9 +22,7 @@ int main()
 {
 	Zombie	*zombieObj;
 	
-	zombieObj = zombieHorde(8, "zombozo");
-	tester(zombieObj, 8);
-
+	zombieObj = zombieHorde(5, "zombozo");
 	delete[] zombieObj;
     return 0;
 }

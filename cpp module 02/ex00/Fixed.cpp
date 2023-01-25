@@ -7,7 +7,6 @@ Fixed::Fixed() : fixedValue(0) {
 
 Fixed::Fixed(const Fixed &obj) : fixedValue(obj.fixedValue) {
     std::cout << "copy constractor called" << std::endl;
-    this->fixedValue = obj.fixedValue;
 };
 
 Fixed & Fixed::operator=(const Fixed& other) {

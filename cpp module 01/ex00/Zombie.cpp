@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 19:19:58 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/13 19:22:19 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:56:15 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ std::string Zombie::getName() {
 }
 
 Zombie::~Zombie() {
-    std::cout << "the zombie " << name << " has destroyed" << std::endl;
+    std::cout << "the zombie " << name << " has been headshooted" << std::endl;
 }

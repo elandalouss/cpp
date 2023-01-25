@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:56:42 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/25 16:43:43 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:36:42 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void Harl::complain(std::string level) {
     void (Harl::*func[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
     std::string funcName[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     for (int i = 0; i <= 4; i++) {
-        if (funcName[i].compare(level) == 0) {
+        if (funcName[i] == level) {
             (this->*func[i])();
         }
     }
