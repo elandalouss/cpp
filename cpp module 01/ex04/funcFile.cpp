@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:36:56 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/25 18:54:28 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/25 22:44:26 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void    programFile (std::string filename, std::string s1, std::string s2) {
         return ;
     }
 
-    std::ofstream   fileTwo(filereplace, std::ofstream::trunc);
+    std::ofstream   fileTwo(filereplace);
     if (!fileTwo.is_open())
     {
         std::cerr << "failed to open file " << filereplace << std::endl;
@@ -35,7 +35,7 @@ void    programFile (std::string filename, std::string s1, std::string s2) {
         std::size_t found = line.find(s1);
         while (getline (fileOne, line)) {
             found = line.find(s1, found + 1);
-            while (found!=std::string::npos) {
+            while (found != std::string::npos) {
                 line.erase(found, s1.length());
                 line.insert(found, s2);
                 found = line.find(s1, found + s2.length());

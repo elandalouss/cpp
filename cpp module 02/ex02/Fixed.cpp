@@ -19,11 +19,13 @@ Fixed & Fixed::operator=(const Fixed& other) {
 }
 
 Fixed::Fixed (const int num) {
+    std::cout << "before :" << num << std::endl;
     fixedValue = num << fractionalBits;
+    std::cout << "after :" << fixedValue << std::endl;
 };
 
 Fixed::Fixed (const float fnum) {
-    float x = fnum * 256;
+    float x = fnum * (1 << fractionalBits) ;
     fixedValue = x;
 };
 
@@ -32,7 +34,7 @@ Fixed::~Fixed() {
 };
 
 int Fixed::getRawBits(void) const{
-    std::cout << "getRawBits member function called" << std::endl;
+    // std::cout << "getRawBits member function called" << std::endl;
     return (this->fixedValue);
 };
 
@@ -87,8 +89,9 @@ Fixed Fixed::operator-(const Fixed &other) const {
     return (fixedValue - other.fixedValue);
 };
 
-Fixed Fixed::operator*(const Fixed &other) const {
-    return  (fixedValue * other.fixedValue);
+Fixed Fixed::operator*(const Fixed &other)  {
+    fixedValue = fixedValue * other.fixedValue >> this->fractionalBits;
+    return  *this;
 };
 
 Fixed Fixed::operator/(const Fixed &other) const {
@@ -117,23 +120,30 @@ Fixed Fixed::operator--(int) {
    return temp;
 };
 
-// int& Fixed::min(int &num1, int &num2) {
-//     if (num1 > num2)
-//         return num2;
-//     else
-//         return num1;
-// }
+Fixed &Fixed::min(Fixed &a, Fixed &b) {
+    if (a.fixedValue > b.fixedValue)
+        return b;
+    else 
+        return a;
+};
 
-// int& Fixed::max(int &obj1, int &obj2) {
-//     if (obj1.fixedValue < obj2.fixedValue)
-//         return obj2.fixedValue;
-//     else
-//         return obj1.fixedValue;
-// }
+Fixed &Fixed::min(const Fixed &a,  const Fixed &b) {
+    if (a.fixedValue > b.fixedValue)
+        return (Fixed &)b;
+    else 
+        return (Fixed &)a;
+};
 
-// // int& Fixed::_min(const int &num1, const int &num2) {
-// //     if (num1 > num2)
-// //         return &num2;
-// //     else
-// //         return &num1;
-// // }
+Fixed &Fixed::max(Fixed &a, Fixed &b) {
+    if (a.fixedValue < b.fixedValue)
+        return b;
+    else 
+        return a;
+};
+
+Fixed &Fixed::max(const Fixed &a, const Fixed &b) {
+    if (a.fixedValue < b.fixedValue)
+        return (Fixed &)b;
+    else 
+        return (Fixed &)a;
+};

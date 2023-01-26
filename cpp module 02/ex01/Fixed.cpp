@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/26 05:10:43 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/26 19:00:42 by aelandal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
 
 
@@ -23,8 +35,7 @@ Fixed::Fixed (const int num) {
 };
 
 Fixed::Fixed (const float fnum) {
-    float x = fnum * 256;
-    fixedValue = x; 
+    fixedValue = fnum * (1 << fractionalBits);
 };
 
 Fixed::~Fixed() {

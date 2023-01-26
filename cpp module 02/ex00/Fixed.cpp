@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/26 05:10:54 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/26 23:17:00 by aelandal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
 
 
@@ -15,12 +27,13 @@ Fixed & Fixed::operator=(const Fixed& other) {
         return *this;
     this->fixedValue = other.fixedValue;
     return *this;
-}
+};
 
 Fixed::~Fixed() {
     std::cout << "destructor has called" << std::endl;
 };
-int Fixed::getRawBits(void) const{
+
+int Fixed::getRawBits(void) const {
     std::cout << "getRawBits member function called" << std::endl;
     return (fixedValue);
 };
