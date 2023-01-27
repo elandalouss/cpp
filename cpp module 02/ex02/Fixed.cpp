@@ -2,16 +2,16 @@
 
 
 Fixed::Fixed() : fixedValue(0) {
-    std::cout << "default constractor called" << std::endl;
+    std::cout << "Default constractor called" << std::endl;
 };
 
 Fixed::Fixed(const Fixed &obj) : fixedValue(obj.fixedValue) {
-    std::cout << "copy constractor called" << std::endl;
+    std::cout << "Copy constractor called" << std::endl;
     this->fixedValue = obj.fixedValue;
 };
 
 Fixed & Fixed::operator=(const Fixed& other) {
-    std::cout << "copy assinement operator has called" << std::endl;
+    std::cout << "Copy assinement operator has called" << std::endl;
     if (this == &other)
         return *this;
     this->fixedValue = other.fixedValue;
@@ -19,22 +19,21 @@ Fixed & Fixed::operator=(const Fixed& other) {
 }
 
 Fixed::Fixed (const int num) {
-    std::cout << "before :" << num << std::endl;
     fixedValue = num << fractionalBits;
-    std::cout << "after :" << fixedValue << std::endl;
 };
 
 Fixed::Fixed (const float fnum) {
-    float x = fnum * (1 << fractionalBits) ;
-    fixedValue = x;
+    // float x = fnum * (1 << fractionalBits) ;
+    // fixedValue = x;
+    fixedValue = fnum * (1 << fractionalBits);
+
 };
 
 Fixed::~Fixed() {
-    std::cout << "destructor has called" << std::endl;
+    std::cout << "Destructor has called" << std::endl;
 };
 
 int Fixed::getRawBits(void) const{
-    // std::cout << "getRawBits member function called" << std::endl;
     return (this->fixedValue);
 };
 
@@ -82,41 +81,40 @@ bool Fixed::operator<(const Fixed& other) {
 };
 
 Fixed Fixed::operator+(const Fixed &other) const {
-    return  (fixedValue + other.fixedValue);
+    return  (Fixed(toFloat() + other.toFloat()));
 };
 
 Fixed Fixed::operator-(const Fixed &other) const {
-    return (fixedValue - other.fixedValue);
+    return  (Fixed(toFloat() - other.toFloat()));
 };
 
 Fixed Fixed::operator*(const Fixed &other)  {
-    fixedValue = fixedValue * other.fixedValue >> this->fractionalBits;
-    return  *this;
+    return  (Fixed(toFloat() * other.toFloat()));
 };
 
 Fixed Fixed::operator/(const Fixed &other) const {
-    return  (fixedValue / other.fixedValue);
+    return  (Fixed(toFloat() / other.toFloat()));
 };
 
 Fixed& Fixed::operator++() {
-    ++fixedValue;
+    this->fixedValue += (1 << fractionalBits);
     return *this;
 };
 
 Fixed& Fixed::operator--() {
-    --fixedValue;
+    this->fixedValue -= (1 << fractionalBits);
     return *this;
 };
 
 Fixed Fixed::operator++(int) {
    Fixed temp = *this;
-   this->fixedValue++;
+    this->fixedValue += (1 << fractionalBits);
    return temp;
 };
 
 Fixed Fixed::operator--(int) {
    Fixed temp = *this;
-    this->fixedValue--;
+    this->fixedValue -= (1 << fractionalBits);
    return temp;
 };
 
