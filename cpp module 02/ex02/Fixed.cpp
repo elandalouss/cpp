@@ -23,10 +23,7 @@ Fixed::Fixed (const int num) {
 };
 
 Fixed::Fixed (const float fnum) {
-    // float x = fnum * (1 << fractionalBits) ;
-    // fixedValue = x;
     fixedValue = fnum * (1 << fractionalBits);
-
 };
 
 Fixed::~Fixed() {
@@ -84,11 +81,11 @@ Fixed Fixed::operator+(const Fixed &other) const {
     return  (Fixed(toFloat() + other.toFloat()));
 };
 
-Fixed Fixed::operator-(const Fixed &other) const {
+Fixed Fixed::operator-(const Fixed &other){
     return  (Fixed(toFloat() - other.toFloat()));
 };
 
-Fixed Fixed::operator*(const Fixed &other)  {
+Fixed Fixed::operator*(const Fixed &other){
     return  (Fixed(toFloat() * other.toFloat()));
 };
 
