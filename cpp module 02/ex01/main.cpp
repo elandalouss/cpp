@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 05:10:41 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/27 19:38:35 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/28 00:41:13 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int main(void) {
     Fixed a;
-    Fixed const b(10);
+    Fixed const b(-3.2f);
     Fixed const c(42.42f);
     Fixed const d(b);
 
     a = Fixed(1234.4321f);
 
-    std::cout << "a is " << a << std::endl;
+     std::cout << "a is " << a << std::endl;
     std::cout << "b is " << b << std::endl;
     std::cout << "c is " << c << std::endl;
     std::cout << "d is " << d << std::endl;
