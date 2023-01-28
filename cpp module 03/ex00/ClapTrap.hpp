@@ -15,8 +15,8 @@ class ClapTrap {
         void beRepaired(unsigned int amount);
             // constructor and destructor
         ClapTrap();
-        ClapTrap(std::string Name);
         ClapTrap(const ClapTrap &obj);
+        ClapTrap(std::string Name);
         ClapTrap &operator=(const ClapTrap& other);
         ~ClapTrap();
             // getter & setter
@@ -24,6 +24,7 @@ class ClapTrap {
         int         getHitPoints();
         int         getEnergyPoints();
         int         getAttackDamage();
+        void        setName(std::string Name);
 };
 
 #endif

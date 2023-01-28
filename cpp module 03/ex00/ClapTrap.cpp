@@ -1,3 +1,4 @@
+
 #include "ClapTrap.hpp"
 
 // definition of member function
@@ -22,7 +23,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
     }
 };
 
-//definition of getters
+//definition of getters and setter
 
 std::string ClapTrap::getName() {
     return (this->name);
@@ -39,6 +40,11 @@ int ClapTrap::getEnergyPoints() {
 int ClapTrap::getAttackDamage() {
     return (this->AttackDamage);
 }
+
+void	ClapTrap::setName(std::string Name) {
+	name = Name;
+};
+
 
 //defenition of constructor and destructor
 
