@@ -11,13 +11,13 @@ void ClapTrap::attack(const std::string& target) {
 };
 
 void ClapTrap::takeDamage(unsigned int amount) {
-    std::cout << std::endl << "ClapTrap " << name << " take damage losing " << amount << " point" << std::endl;
+    std::cout << std::endl << name << " take damage losing " << amount << " point" << std::endl;
     this->HitPoints -= amount;
 };
 
 void ClapTrap::beRepaired(unsigned int amount) {
     if (getEnergyPoints() != 0) {
-        std::cout << std::endl << "ClapTrap " << getName() << " repear itself with " << amount << " point" << std::endl;
+        std::cout << std::endl << getName() << " repear itself with " << amount << " point" << std::endl;
         this->HitPoints += amount;
         this->EnergyPoints--;
     }
@@ -25,19 +25,19 @@ void ClapTrap::beRepaired(unsigned int amount) {
 
 //definition of getters and setter
 
-std::string ClapTrap::getName() {
+std::string ClapTrap::getName() const{
     return (this->name);
 }
 
-int ClapTrap::getHitPoints() {
+int ClapTrap::getHitPoints() const{
     return (this->HitPoints);
 }
 
-int ClapTrap::getEnergyPoints() {
+int ClapTrap::getEnergyPoints() const{
     return (this->EnergyPoints);
 }
 
-int ClapTrap::getAttackDamage() {
+int ClapTrap::getAttackDamage() const{
     return (this->AttackDamage);
 }
 
@@ -46,11 +46,12 @@ void	ClapTrap::setName(std::string Name) {
 };
 
 
-//defenition of constructor and destructor
+//definition of constructor and destructor
 
 
 ClapTrap::ClapTrap() {
     std::cout << "Default constructor from ClapTrap called" << std::endl;
+    this->name = "unnamed";
     this->HitPoints = 10;
     this->EnergyPoints = 10;
     this->AttackDamage = 0;
@@ -66,7 +67,14 @@ ClapTrap::ClapTrap(std::string Name) {
 
 ClapTrap::ClapTrap(const ClapTrap &obj) {
     std::cout << "Copy constructor from ClapTrap called" << std::endl;    
-    this->name = obj.name;
+    std::cout << "Copy constructor from ClapTrap called" << std::endl;    
+    std::cout << "Copy constructor from ClapTrap called" << std::endl;    
+    std::cout << "Copy constructor from ClapTrap called" << std::endl;    
+    std::cout << "Copy constructor from ClapTrap called" << std::endl;    
+    std::cout << "Copy constructor from ClapTrap called" << std::endl;    
+    std::cout << "Copy constructor from ClapTrap called" << std::endl;    
+    std::cout << "Copy constructor from ClapTrap called" << std::endl;    
+    this->name = "wdadawdadwdawd";
     this->AttackDamage = obj.AttackDamage;
     this->HitPoints = obj.HitPoints;
     this->EnergyPoints = obj.EnergyPoints;

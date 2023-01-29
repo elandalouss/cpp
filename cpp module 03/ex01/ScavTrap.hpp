@@ -6,8 +6,6 @@ class ScavTrap : public ClapTrap {
     public :
         // member functions
         void attack(const std::string &target);
-        void takeDamage(unsigned int amount);
-        void beRepaired(unsigned int amount);
         void guardGate();
         // constructors and distructor
         ScavTrap();

@@ -3,7 +3,15 @@
 // definition of member functions
 
 void FragTrap::highFivesGuys(void) {
-    std::cout << "high fives" << std::endl;
+    std::cout << "high fives." << std::endl;
+};
+
+
+void FragTrap::attack(const std::string& target) {
+    if (getEnergyPoints() != 0) {
+        std::cout << std::endl << "FragTrap " << name <<  " attacks "<< target << ", causing " << AttackDamage <<  " points of damage" << std::endl;
+        this->EnergyPoints--;
+    }
 };
 
 // definition of constructors and destructor

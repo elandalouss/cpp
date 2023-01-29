@@ -1,10 +1,12 @@
 #include "ClapTrap.hpp"
+#include <iostream>
 
 int main () {
+
+
     ClapTrap    obj("ana");
-    ClapTrap    obj2("target");
-
-
+    ClapTrap    obj2(ClapTrap("OK"));
+    
     obj.attack(obj2.getName());
 
     std::cout << "===== " << obj.getName() << " =====" << std::endl << std::endl;;

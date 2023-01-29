@@ -20,10 +20,10 @@ class ClapTrap {
         ClapTrap &operator=(const ClapTrap& other);
         ~ClapTrap();
             // getter & setter
-        std::string getName();
-        int         getHitPoints();
-        int         getEnergyPoints();
-        int         getAttackDamage();
+        std::string getName() const;
+        int         getHitPoints() const;
+        int         getEnergyPoints() const;
+        int         getAttackDamage() const;
         void        setName(std::string Name);
 };
 

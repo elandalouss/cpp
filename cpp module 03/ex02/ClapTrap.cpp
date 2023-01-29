@@ -10,13 +10,13 @@ void ClapTrap::attack(const std::string& target) {
 };
 
 void ClapTrap::takeDamage(unsigned int amount) {
-    std::cout << std::endl << "ClapTrap " << name << " take damage losing " << amount << " point" << std::endl;
+    std::cout << std::endl << name << " take damage losing " << amount << " point" << std::endl;
     this->HitPoints -= amount;
 };
 
 void ClapTrap::beRepaired(unsigned int amount) {
     if (getEnergyPoints() != 0) {
-        std::cout << std::endl << "ClapTrap " << getName() << " repear itself with " << amount << " point" << std::endl;
+        std::cout << std::endl << getName() << " repear itself with " << amount << " point" << std::endl;
         this->HitPoints += amount;
         this->EnergyPoints--;
     }

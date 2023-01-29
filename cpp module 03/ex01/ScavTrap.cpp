@@ -13,19 +13,6 @@ void ScavTrap::attack (const std::string &target) {
     }
 };
 
-void ScavTrap::takeDamage(unsigned int amount) {
-    std::cout << std::endl << "ScavTrap " << name << " take damage losing " << amount << " point" << std::endl;
-    this->HitPoints -= amount;
-};
-
-void ScavTrap::beRepaired(unsigned int amount) {
-    if (getEnergyPoints() != 0) {
-        std::cout << std::endl << "ScavTrap " << getName() << " repear itself with " << amount << " point" << std::endl;
-        this->HitPoints += amount;
-        this->EnergyPoints--;
-    }
-};
-
 
 // definition of constructors and destructor
 
