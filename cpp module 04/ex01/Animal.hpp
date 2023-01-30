@@ -10,7 +10,7 @@ class Animal{
         Animal();
         Animal(const Animal& obj);
         Animal &operator=(const Animal& other);
-        ~Animal();
+        virtual ~Animal();
         std::string     getType() const;
         virtual void    makeSound()const ;
 };
@@ -36,26 +36,5 @@ class Cat : public Animal {
     private :
         Brain *att;
 };
-
-// class wrongAnimal{
-//     protected :
-//         std::string type;
-//     public :
-//         wrongAnimal();
-//         wrongAnimal(const wrongAnimal& obj);
-//         wrongAnimal &operator=(const wrongAnimal& other);
-//         ~wrongAnimal();
-//         std::string     getType() const;
-//         virtual void    makeSound()const ;
-// };
-
-// class wrongCat : public wrongAnimal {
-//     public :
-//         wrongCat();
-//         wrongCat(const wrongCat& obj);
-//         wrongCat &operator=(const wrongCat& other);
-//         ~wrongCat();
-//         void makeSound() const ;
-// };
 
 #endif

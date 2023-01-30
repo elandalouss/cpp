@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/30 17:49:43 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/30 17:50:38 by aelandal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
 
 // animal class 
@@ -33,34 +45,34 @@ void Animal::makeSound() const {
 
 //wrong animal
 
-// wrongAnimal::wrongAnimal() {
-//     std::cout << "Default constructor called from wrongAnimal class" << std::endl;
-// };
+wrongAnimal::wrongAnimal() {
+    std::cout << "Default constructor called from wrongAnimal class" << std::endl;
+};
 
-// wrongAnimal::wrongAnimal(const wrongAnimal& obj) {
-//     std::cout << "Default constructor called from wrongAnimal class" << std::endl;
-//     this->type = obj.type;
-// };
+wrongAnimal::wrongAnimal(const wrongAnimal& obj) {
+    std::cout << "Default constructor called from wrongAnimal class" << std::endl;
+    this->type = obj.type;
+};
 
-// wrongAnimal &wrongAnimal::operator=(const wrongAnimal& other) {
-//     std::cout << "Copy assainement operator called from wrongAnimal class" << std::endl;
-//     if (this == &other) 
-//         return *this;
-//     this->type = other.type;
-//     return *this;
-// };
+wrongAnimal &wrongAnimal::operator=(const wrongAnimal& other) {
+    std::cout << "Copy assainement operator called from wrongAnimal class" << std::endl;
+    if (this == &other) 
+        return *this;
+    this->type = other.type;
+    return *this;
+};
 
-// wrongAnimal::~wrongAnimal() {
-//     std::cout << "Distructor called from wrongAnimal class" << std::endl;
-// };
+wrongAnimal::~wrongAnimal() {
+    std::cout << "Distructor called from wrongAnimal class" << std::endl;
+};
 
-// std::string wrongAnimal::getType () const{
-//     return type;
-// };
+std::string wrongAnimal::getType () const{
+    return type;
+};
 
-// void wrongAnimal::makeSound() const {
-//     std::cout << "wrong sound" << std::endl;
-// };
+void wrongAnimal::makeSound() const {
+    std::cout << "wrong sound" << std::endl;
+};
 
 // Dog class
 
@@ -119,28 +131,28 @@ void Cat::makeSound() const{
 
 // wrong cat
 
-// wrongCat::wrongCat() {
-//     std::cout << "Default constructor called from wrongCat class" << std::endl;
-//     type = "wrongCat";
-// };
+wrongCat::wrongCat() {
+    std::cout << "Default constructor called from wrongCat class" << std::endl;
+    type = "wrongCat";
+};
 
-// wrongCat::wrongCat(const wrongCat& obj) {
-//     std::cout << "Default constructor called from wrongCat class" << std::endl;
-//     this->type = obj.type;
-// };
+wrongCat::wrongCat(const wrongCat& obj) {
+    std::cout << "Default constructor called from wrongCat class" << std::endl;
+    this->type = obj.type;
+};
 
-// wrongCat &wrongCat::operator=(const wrongCat& other) {
-//     std::cout << "Copy assainement operator called from wrongCat class" << std::endl;
-//     if (this == &other) 
-//         return *this;
-//     this->type = other.type;
-//     return *this;
-// };
+wrongCat &wrongCat::operator=(const wrongCat& other) {
+    std::cout << "Copy assainement operator called from wrongCat class" << std::endl;
+    if (this == &other) 
+        return *this;
+    this->type = other.type;
+    return *this;
+};
 
-// wrongCat::~wrongCat() {
-//     std::cout << "Distructor called from wrongCat class" << std::endl;
-// };
+wrongCat::~wrongCat() {
+    std::cout << "Distructor called from wrongCat class" << std::endl;
+};
 
-// void wrongCat::makeSound() const{
-//     std::cout << "wrong meaaw" << std::endl;
-// };
+void wrongCat::makeSound() const{
+    std::cout << "wrong meaaw" << std::endl;
+};

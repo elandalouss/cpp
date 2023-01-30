@@ -32,50 +32,22 @@ void Animal::makeSound() const {
     std::cout << "sound" << std::endl;
 };
 
-//wrong animal
-
-// wrongAnimal::wrongAnimal() {
-//     std::cout << "Default constructor called from wrongAnimal class" << std::endl;
-// };
-
-// wrongAnimal::wrongAnimal(const wrongAnimal& obj) {
-//     std::cout << "Default constructor called from wrongAnimal class" << std::endl;
-//     this->type = obj.type;
-// };
-
-// wrongAnimal &wrongAnimal::operator=(const wrongAnimal& other) {
-//     std::cout << "Copy assainement operator called from wrongAnimal class" << std::endl;
-//     if (this == &other) 
-//         return *this;
-//     this->type = other.type;
-//     return *this;
-// };
-
-// wrongAnimal::~wrongAnimal() {
-//     std::cout << "Distructor called from wrongAnimal class" << std::endl;
-// };
-
-// std::string wrongAnimal::getType () const{
-//     return type;
-// };
-
-// void wrongAnimal::makeSound() const {
-//     std::cout << "wrong sound" << std::endl;
-// };
-
-// Dog class
 
 Dog::Dog() {
     std::cout << "Default constructor called from Dog class" << std::endl;
     type = "Dog";
+    this->att = new Brain();
 };
 
 Dog::Dog(const Dog& obj) {
     std::cout << "Copy constructor called from Dog class" << std::endl;
     this->type = obj.type;
-    this->att = new Brain [100];
-    for (int i = 0; i < 100; i++)
-        this->att[i] = obj.att[i];
+    if (this->att == NULL) {
+        this->att = new Brain();
+        *(this->att) = *(obj.att);
+    }
+    else
+        *(this->att) = *(obj.att);
 };
 
 Dog &Dog::operator=(const Dog& other) {
@@ -83,14 +55,17 @@ Dog &Dog::operator=(const Dog& other) {
     if (this == &other) 
         return *this;
     this->type = other.type;
-    this->att = new Brain [100];
-    for (int i = 0; i < 100; i++)
-        this->att[i] = other.att[i];
+    if (this->att == NULL) {
+        this->att = new Brain();
+        *(this->att) = *(other.att);
+    } else 
+        *(this->att) = *(other.att);
     return *this;
 };
 
 Dog::~Dog() {
     std::cout << "Distructor called from Dog class" << std::endl;
+    delete this->att;
 };
 void Dog::makeSound() const{
     std::cout << "how wow" << std::endl;
@@ -101,15 +76,17 @@ void Dog::makeSound() const{
 Cat::Cat() {
     std::cout << "Default constructor called from Cat class" << std::endl;
     type = "Cat";
+    this->att = new Brain();
 };
 
 Cat::Cat(const Cat& obj) {
     std::cout << "Copy constructor called from Cat class" << std::endl;
     this->type = obj.type;
-    this->type = obj.type;
-    this->att = new Brain [100];
-    for (int i = 0; i < 100; i++)
-        this->att[i] = obj.att[i];
+    if (this->att == NULL) {
+        this->att = new Brain();
+        *(this->att) = *(obj.att);
+    } else
+        *(this->att) = *(obj.att);
 };
 
 Cat &Cat::operator=(const Cat& other) {
@@ -117,45 +94,19 @@ Cat &Cat::operator=(const Cat& other) {
     if (this == &other) 
         return *this;
     this->type = other.type;
-    this->type = other.type;
-    this->att = new Brain [100];
-    for (int i = 0; i < 100; i++)
-        this->att[i] = other.att[i];
+    if (this->att == NULL) {
+        this->att = new Brain();
+        *(this->att) = *(other.att);
+    } else 
+        *(this->att) = *(other.att);
     return *this;
 };
 
 Cat::~Cat() {
     std::cout << "Distructor called from Cat class" << std::endl;
+    delete this->att;
 };
 
 void Cat::makeSound() const{
     std::cout << "meaaw" << std::endl;
 };
-
-// wrong cat
-
-// wrongCat::wrongCat() {
-//     std::cout << "Default constructor called from wrongCat class" << std::endl;
-//     type = "wrongCat";
-// };
-
-// wrongCat::wrongCat(const wrongCat& obj) {
-//     std::cout << "Default constructor called from wrongCat class" << std::endl;
-//     this->type = obj.type;
-// };
-
-// wrongCat &wrongCat::operator=(const wrongCat& other) {
-//     std::cout << "Copy assainement operator called from wrongCat class" << std::endl;
-//     if (this == &other) 
-//         return *this;
-//     this->type = other.type;
-//     return *this;
-// };
-
-// wrongCat::~wrongCat() {
-//     std::cout << "Distructor called from wrongCat class" << std::endl;
-// };
-
-// void wrongCat::makeSound() const{
-//     std::cout << "wrong meaaw" << std::endl;
-// };

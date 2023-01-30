@@ -2,13 +2,16 @@
 
 int main()
 {
-	// const Animal* j = new Dog();
-	// const Animal* i = new Cat();
-	Dog yy;
-	Dog *kk = new Dog();
-	
-	yy = *kk;
-// ;	delete j;//should not create a leak
-// 	delete i;
+
+	Animal *obj = new Animal[10];
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (i % 2 == 0)
+			new(&obj[i]) Dog();
+		else
+			new(&obj[i]) Cat();
+	}
+	delete [] obj;
 	return 0;
 }

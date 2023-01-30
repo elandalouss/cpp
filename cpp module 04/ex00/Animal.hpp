@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/30 17:49:42 by aelandal          #+#    #+#             */
+/*   Updated: 2023/01/30 19:44:27 by aelandal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ANIMAL_H
 #define ANIMAL_H
 #include <iostream>
@@ -32,25 +44,25 @@ class Cat : public Animal {
         void makeSound() const ;
 };
 
-// class wrongAnimal{
-//     protected :
-//         std::string type;
-//     public :
-//         wrongAnimal();
-//         wrongAnimal(const wrongAnimal& obj);
-//         wrongAnimal &operator=(const wrongAnimal& other);
-//         ~wrongAnimal();
-//         std::string     getType() const;
-//         virtual void    makeSound()const ;
-// };
+class wrongAnimal{
+    protected :
+        std::string type;
+    public :
+        wrongAnimal();
+        wrongAnimal(const wrongAnimal& obj);
+        wrongAnimal &operator=(const wrongAnimal& other);
+        ~wrongAnimal();
+        std::string     getType() const;
+        void    makeSound()const ;
+};
 
-// class wrongCat : public wrongAnimal {
-//     public :
-//         wrongCat();
-//         wrongCat(const wrongCat& obj);
-//         wrongCat &operator=(const wrongCat& other);
-//         ~wrongCat();
-//         void makeSound() const ;
-// };
+class wrongCat : public wrongAnimal {
+    public :
+        wrongCat();
+        wrongCat(const wrongCat& obj);
+        wrongCat &operator=(const wrongCat& other);
+        ~wrongCat();
+        void makeSound() const ;
+};
 
 #endif
