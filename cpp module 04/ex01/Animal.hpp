@@ -36,5 +36,4 @@ class Cat : public Animal {
     private :
         Brain *att;
 };
-
 #endif

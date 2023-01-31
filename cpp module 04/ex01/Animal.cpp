@@ -42,12 +42,8 @@ Dog::Dog() {
 Dog::Dog(const Dog& obj) {
     std::cout << "Copy constructor called from Dog class" << std::endl;
     this->type = obj.type;
-    if (this->att == NULL) {
-        this->att = new Brain();
-        *(this->att) = *(obj.att);
-    }
-    else
-        *(this->att) = *(obj.att);
+    this->att = new Brain();
+    *(this->att) = *(obj.att);
 };
 
 Dog &Dog::operator=(const Dog& other) {
@@ -82,11 +78,8 @@ Cat::Cat() {
 Cat::Cat(const Cat& obj) {
     std::cout << "Copy constructor called from Cat class" << std::endl;
     this->type = obj.type;
-    if (this->att == NULL) {
-        this->att = new Brain();
-        *(this->att) = *(obj.att);
-    } else
-        *(this->att) = *(obj.att);
+    this->att = new Brain();
+    *(this->att) = *(obj.att);
 };
 
 Cat &Cat::operator=(const Cat& other) {
