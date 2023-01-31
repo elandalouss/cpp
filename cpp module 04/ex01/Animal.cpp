@@ -53,6 +53,7 @@ Dog &Dog::operator=(const Dog& other) {
     this->type = other.type;
     if (this->att == NULL) {
         this->att = new Brain();
+        std::cout << "here" << std::endl;
         *(this->att) = *(other.att);
     } else 
         *(this->att) = *(other.att);

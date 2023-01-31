@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:49:40 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/31 17:55:59 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/31 18:58:13 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
-
-	// const wrongAnimal* meta = new wrongAnimal();
+	// const Animal* meta = new Animal();
 	// const Animal* j = new Dog();
-	// const wrongAnimal* i = new wrongCat();
+	// const Animal* i = new Cat();
 	// std::cout << j->getType() << " " << std::endl;
 	// std::cout << i->getType() << " " << std::endl;
 	// i->makeSound();
 	// j->makeSound();
 	// meta->makeSound();
+
+	const wrongAnimal* meta = new wrongAnimal();
+	const Animal* j = new Dog();
+	const wrongAnimal* i = new wrongCat();
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound();
+	j->makeSound();
+	meta->makeSound();
 
 	delete meta;
 	delete j;

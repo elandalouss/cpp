@@ -2,16 +2,15 @@
 
 int main()
 {
+	Animal *obj[10];
 
-	Animal *obj = new Animal[10];
-
-	for (int i = 0; i < 10; i++)
-	{
-		if (i % 2 == 0)
-			new(&obj[i]) Dog();
+	for (int i = 0; i < 10; i++) {
+		if (i % 2 == 0) 
+			obj[i] = new Dog();
 		else
-			new(&obj[i]) Cat();
+			obj[i] = new Cat();
 	}
-	delete [] obj;
+	for (int i = 0; i < 10; i++)
+		delete obj[i];
 	return 0;
 }

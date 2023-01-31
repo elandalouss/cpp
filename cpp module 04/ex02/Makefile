@@ -3,7 +3,6 @@ NAME = abs
 SRCS =  main.cpp \
 		Animal.cpp \
 		Brain.cpp \
-		abs.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:49:43 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/30 17:50:38 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/01/31 18:56:34 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,9 +143,8 @@ wrongCat::wrongCat(const wrongCat& obj) {
 
 wrongCat &wrongCat::operator=(const wrongCat& other) {
     std::cout << "Copy assainement operator called from wrongCat class" << std::endl;
-    if (this == &other) 
-        return *this;
-    this->type = other.type;
+    if (this != &other) 
+        this->type = other.type;
     return *this;
 };
 
