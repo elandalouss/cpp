@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:28:37 by aelandal          #+#    #+#             */
-/*   Updated: 2023/01/31 18:28:38 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/01 18:37:55 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ int main()
 	Dog a;
 	Cat b;
 
-	a.makeSound();
-	b.makeSound();
+	std::cout << a.getType() << std::endl;
+	std::cout << b.getType() << std::endl;
 }

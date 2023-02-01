@@ -1,7 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/01 18:40:08 by aelandal          #+#    #+#             */
+/*   Updated: 2023/02/01 18:40:09 by aelandal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Brain.hpp"
 
 Brain::Brain() {
     std::cout << "Default constructor called from Brain class" << std::endl;
+    for (int i = 0; i < 100; i++)
+        ideas[i] = "";
 };
 
 Brain::Brain(const Brain& obj) {

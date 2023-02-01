@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/01 18:40:43 by aelandal          #+#    #+#             */
+/*   Updated: 2023/02/01 18:40:44 by aelandal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
 #include "Brain.hpp"
 
@@ -53,7 +65,6 @@ Dog &Dog::operator=(const Dog& other) {
     this->type = other.type;
     if (this->att == NULL) {
         this->att = new Brain();
-        std::cout << "here" << std::endl;
         *(this->att) = *(other.att);
     } else 
         *(this->att) = *(other.att);
