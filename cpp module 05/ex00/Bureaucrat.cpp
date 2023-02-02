@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:32:06 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/02 22:20:35 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/02 23:19:40 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ Bureaucrat::~Bureaucrat() {
     std::cout << "Destructor from Bureaucrat class has been called" << std::endl;
 }
 
-char *Bureaucrat::GradeTooHighException::what() {
+Bureaucrat::GradeTooHighException::GradeTooHighException(char *msg) : message(msg) {};
+
+const char *Bureaucrat::GradeTooHighException::what() const  {
     return (message);
 };
 
