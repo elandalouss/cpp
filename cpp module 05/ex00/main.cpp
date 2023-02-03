@@ -6,21 +6,27 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:31:32 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/02 23:46:02 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:14:12 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 int main() {
-    Bureaucrat a("ayoub", 54);
-    Bureaucrat b(a);
-    try {
-        throw Bureaucrat::GradeTooHighException;
-    } catch (...) {
-        // a.decrement();
-        a.increment();
-        std::cout << a << std::endl;      
+    try
+    {
+        Bureaucrat a("ayoub", 2);
+        Bureaucrat b(a);
+        try {
+            // a.decrement();
+            a.increment();
+        } catch (std::exception &e) {
+            std::cout << e.what() << std::endl;      
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
     }
     return 0;
 }

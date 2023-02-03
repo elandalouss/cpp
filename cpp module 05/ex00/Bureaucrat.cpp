@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:32:06 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/02 23:19:40 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:13:08 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 Bureaucrat::Bureaucrat() {
     std::cout << "Default constructor from Bureaucrat class has been called" << std::endl;
-    int a = 1, b = 150;
-    srand(time(NULL));
-    this->grade = a + rand() % b - a + 1;
 };
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.name){
@@ -35,16 +32,22 @@ Bureaucrat::~Bureaucrat() {
     std::cout << "Destructor from Bureaucrat class has been called" << std::endl;
 }
 
-Bureaucrat::GradeTooHighException::GradeTooHighException(char *msg) : message(msg) {};
+const char *Bureaucrat::GradeTooHighException::what() const throw() {
+    return ("Grade Too High");
+};
 
-const char *Bureaucrat::GradeTooHighException::what() const  {
-    return (message);
+const char *Bureaucrat::GradeTooLowException::what() const throw() {
+    return ("Grade Too Low");
 };
 
 Bureaucrat::Bureaucrat(std::string e_name, int e_grade) 
     : name(e_name) {
     std::cout << "Parametrised constructor from Bureaucrat class has been called" << std::endl;
     this->grade = e_grade;
+    if (this->grade > 150)
+        throw Bureaucrat::GradeTooHighException();
+    else if (this->grade < 1)
+        throw Bureaucrat::GradeTooLowException();
 };    
 
 void Bureaucrat::setGrade(int e_grade) {
@@ -61,7 +64,7 @@ std::string Bureaucrat::getName() const {
 
 void Bureaucrat::increment() {
     if (this->grade == 1) {
-        std::cout << "out of range" << std::endl;
+        throw Bureaucrat::GradeTooHighException();
     } else {
         this->grade--;
     }
@@ -69,7 +72,7 @@ void Bureaucrat::increment() {
 
 void Bureaucrat::decrement() {
     if (this->grade == 150) {
-        std::cout << "out of range" << std::endl;
+        throw Bureaucrat::GradeTooLowException();
     } else {
         this->grade++;
     }
