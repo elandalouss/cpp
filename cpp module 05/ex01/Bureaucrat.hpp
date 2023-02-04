@@ -6,13 +6,17 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:51:14 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/03 23:06:10 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/04 17:52:49 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_H
 #define BUREAUCRAT_H
+#pragma once
 #include <iostream>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
     private :
@@ -29,16 +33,18 @@ class Bureaucrat {
         std::string getName() const;
         void increment();
         void decrement();
+        void signForm(Form &objForm);
+
     class GradeTooHighException : public std::exception {
         public :
-            virtual const char *what() const throw();        
+            virtual const char *what () const throw();            
     };
 
     class GradeTooLowException : public std::exception {
         public :
             virtual const char *what () const throw();            
     };
-    
+
 };
 std::ostream& operator<< (std::ostream& stream, const Bureaucrat& obj);
 
