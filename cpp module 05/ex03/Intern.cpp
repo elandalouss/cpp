@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 05:11:52 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 17:38:30 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 23:22:05 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,14 @@ AForm *Intern::makeForm(std::string name, std::string target) {
     for (int i = 0; i < 3; i++){
         if (FormName[i] == name) {
             std::cout << "Intern creates " << name << std::endl;
+            for (int j = 0; j < 3; j++) {
+                if (i != j)
+                    delete func[j];
+            }
             return func[i];
         }
-    } 
+    }
+    for (int j = 0; j < 3; j++)
+        delete func[j];
     throw Intern::FormNotFound();
 };

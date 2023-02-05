@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:49:54 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 04:47:31 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 23:19:25 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class AForm {
 		AForm(std::string e_name, const int e_grade_Sign, const int e_grade_Exec);
 		AForm(const AForm &obj);
 		AForm &operator=(const AForm &other);
-		~AForm();
+		virtual ~AForm();
 		std::string	getName() const;
 		int		getGradeSign() const ;
 		int		getGradeExec() const ;
