@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 19:28:35 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/04 21:01:56 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 01:27:38 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,25 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) {;
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm& other) {
     std::cout << "Copy assainement from RobotomyRequestForm Class has been called" << std::endl;
-    if (this != &obj)
+    if (this != &other)
         this->target = other.target;
     return *this;
 };
 
 RobotomyRequestForm::~RobotomyRequestForm() {
     std::cout << "Destructor from RobotomyRequestForm Class has been called" << std::endl;
+};
+
+std::string RobotomyRequestForm::getTarget() {
+    return (this->target);
+};
+
+void RobotomyRequestForm::execute(Bureaucrat const & executor){
+    if (this->getSigned() == true && executor.getGrade() >= 72 && executor.getGrade() >= 45) {
+        srand(time(0));
+        if (rand() % 2 == 0)
+            std::cout << getTarget() << " has been robotomized successfully 50% of the time." << std::endl;
+        else
+            std::cout << "the robotomy failed." << std::endl;
+    }
 };

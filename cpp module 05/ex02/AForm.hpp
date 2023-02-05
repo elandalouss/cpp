@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:49:54 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/04 21:17:11 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 00:16:41 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ class AForm {
 		AForm &operator=(const AForm &other);
 		~AForm();
 		std::string	getName() const;
-		int	getGradeSign() const ;
-		int	getGradeExec() const ;
+		int		getGradeSign() const ;
+		int		getGradeExec() const ;
 		bool	getSigned() const ;
-		virtual void beSigned(Bureaucrat &BurObj) = 0;
+		void	beSigned(Bureaucrat &BurObj);
+		virtual void execute(Bureaucrat const & executor) = 0;
 		class GradeTooLowException : public std::exception {
 			public :
 				virtual const char *what () const throw();

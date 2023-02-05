@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:52:57 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/04 21:01:17 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 01:28:02 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,21 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm& other) {
     std::cout << "Copy assainement from PresidentialPardonForm Class has been called" << std::endl;
-    if (this != &obj)
+    if (this != &other)
         this->target = other.target;
     return *this;
 };
 
 PresidentialPardonForm::~PresidentialPardonForm() {
     std::cout << "Destructor from PresidentialPardonForm Class has been called" << std::endl;
+};
+
+std::string PresidentialPardonForm::getTarget() const {
+    return (this->target);
+};
+
+void PresidentialPardonForm::execute(Bureaucrat const & executor){
+    if (this->getSigned() == true && executor.getGrade() >= 25 && executor.getGrade() >= 5) {
+        std::cout << "Informs that " << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+    }
 };

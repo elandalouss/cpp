@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:47:51 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/04 18:58:58 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/04 23:21:35 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,11 @@ void Bureaucrat::decrement() {
     } else {
         this->grade++;
     }
+};
+
+void Bureaucrat::executeForm(AForm const & form) {
+    if (this->getGrade() >= form.getGradeExec())
+        std::cout << getName() << " executed " << form.getName() << std::endl;
 };
 
 void Bureaucrat::signForm(AForm &objForm) {
