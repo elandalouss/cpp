@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 19:30:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 01:22:19 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 04:55:58 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,35 @@ std::string  ShrubberyCreationForm::getTarget() const {
     return (this->target);
 };
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor){
-    if (this->getSigned() == true && executor.getGrade() >= 145 && executor.getGrade() >= 137) {
+bool	ShrubberyCreationForm::beSigned(Bureaucrat const &BurObj) {
+    if (BurObj.getGrade() >= 145) {
+        return (true);
+    }
+    else 
+        throw AForm::GradeTooLowException();
+};
+
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) {
+    if (beSigned(executor) == true && executor.getGrade() >= 137) {
         std::string name = getTarget() + "_shrubbery";
         std::ofstream file(name);
         if (!file.is_open())
         {
             std::cerr << "failed to open file " << file << std::endl;
             return ;
-        } else
-            file << "waaaaaa tari9";
+        } else {
+            file <<                "         ,@@@@@@@,\n"
+                       " ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
+                        ",&%%&%&&%,@@@@@/@@@@@@,88888/8o\n"
+                    "  ,%&%&&%&&%,@@8888@@@/@@@888888/88'\n"
+                   " %&&%&%&/%&&%@@@@/ /@@@8888888888'\n"
+                   " %&&%/ %&%%&&@@ V /@@' `888 `/88'\n"
+                   " `&% ` /%&'    |.|        \'|8'\n"
+                       " |o|        | |         | |\n"
+                      "  |.|        | |         | |\n"
+                    "jgs \\/ ._//_/__/  ,_//__\\/.  _//__/_;\n";
+        }
+                        
             
     }
 };

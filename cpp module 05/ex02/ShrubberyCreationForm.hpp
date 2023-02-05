@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 19:30:38 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 01:23:58 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 04:47:14 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class ShrubberyCreationForm : public AForm{
         ShrubberyCreationForm &operator=(const ShrubberyCreationForm& other);
         void execute(Bureaucrat const & executor);
         std::string getTarget() const ;
+        bool    beSigned(Bureaucrat const &BurObj);
 };
 
 #endif

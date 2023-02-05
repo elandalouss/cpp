@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:52:57 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 01:28:02 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 05:04:30 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,17 @@ std::string PresidentialPardonForm::getTarget() const {
     return (this->target);
 };
 
-void PresidentialPardonForm::execute(Bureaucrat const & executor){
-    if (this->getSigned() == true && executor.getGrade() >= 25 && executor.getGrade() >= 5) {
+void PresidentialPardonForm::execute(Bureaucrat const & executor) {
+    if (beSigned(executor) == true && executor.getGrade() >= 5)
         std::cout << "Informs that " << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-    }
+    else
+        throw AForm::GradeTooLowException();
 };
+
+bool	PresidentialPardonForm::beSigned(Bureaucrat const &BurObj) {
+    if (BurObj.getGrade() >= 25) {
+        return (true);
+    }
+    else 
+        throw AForm::GradeTooLowException();
+}

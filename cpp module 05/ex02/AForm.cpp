@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:50:11 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/04 21:14:26 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 04:48:53 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ bool	AForm::getSigned() const {
     return (this->itSigned);
 };
 
-void AForm::beSigned(Bureaucrat &BurObj) {
-    if (BurObj.getGrade() >= this->grade_Sign)
+bool AForm::beSigned(Bureaucrat const &BurObj) {
+    if (BurObj.getGrade() >= this->grade_Sign) {
         this->itSigned = true;
+        return (true);
+    }
     else 
         throw AForm::GradeTooLowException();
 };
