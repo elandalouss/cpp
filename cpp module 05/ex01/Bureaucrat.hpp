@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:51:14 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/04 17:52:49 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 22:57:20 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ class Bureaucrat {
 
     class GradeTooHighException : public std::exception {
         public :
-            virtual const char *what () const throw();            
+            const char *what () const throw();            
     };
 
     class GradeTooLowException : public std::exception {
         public :
-            virtual const char *what () const throw();            
+            const char *what () const throw();            
     };
 
 };

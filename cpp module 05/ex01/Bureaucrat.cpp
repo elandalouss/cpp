@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:32:06 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/04 18:29:01 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 22:19:45 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.name){
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
     std::cout << "Copy assainement operator from Bureaucrat class has been called" << std::endl;
-    if (this != &other)
-        *this = other;
+    this->grade = other.grade;
     return *this;
 };
 
@@ -66,28 +65,26 @@ void Bureaucrat::increment() {
     std::cout << "increment the grade" << std::endl;
     if (this->grade == 1)
         throw Bureaucrat::GradeTooHighException();
-    else
-        this->grade--;
+    this->grade--;
 };
 
 void Bureaucrat::decrement() {
     std::cout << "decrement the grade" << std::endl;
-    if (this->grade == 150) {
+    if (this->grade == 150)
         throw Bureaucrat::GradeTooLowException();
-    } else {
-        this->grade++;
-    }
+    this->grade++;
 };
 
 void Bureaucrat::signForm(Form &objForm) {
     if (objForm.getSigned() == true) {
         std::cout << this->name << " couldn’t sign " << objForm.getName() << " because " << "Form is already signed" << std::endl;
     }
-    else if (objForm.getGradeSign() <= this->getGrade()) {
+    else if (objForm.getGradeSign() >= this->getGrade()) {
         std::cout << this->name << " signed " << objForm.getName() << std::endl;
+        objForm.beSigned(*this);
     }
-    else if (!(objForm.getGradeSign() <= this->getGrade()))
-        std::cout << this->name << " couldn’t sign " << objForm.getName() << " because " << "grade is too higt" << std::endl;
+    else
+        std::cout << this->name << " couldn’t sign " << objForm.getName() << " because " << "grade is too Low." << std::endl;
 };
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& obj) {

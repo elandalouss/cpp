@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 05:11:52 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 05:36:14 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 17:38:30 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Intern::Intern(const Intern &obj) {
 
 Intern& Intern::operator=(const Intern &other) {
     std::cout << "Copy assainement operator has been called fron Intern class" << std::endl;
-    if (this == &other)
+    if (this != &other)
         return *this;
     return (*this);
 };
@@ -32,9 +32,23 @@ Intern::~Intern() {
     std::cout << "Destractor has been called fron Intern class" << std::endl;
 };
 
+const char *Intern::FormNotFound::what () const throw() {
+    return ("Form not found");
+};
 
-
-// AForm *Intern::makeForm(std::string name, std::string target) {
-//     AForm *a = new A;
-//     return a;
-// };
+AForm *Intern::makeForm(std::string name, std::string target) {
+    std::string FormName[] = {"Shrubbery Creation", "Robotomy Request", "Presidential Pardon"};
+    AForm *func[3] = {
+        new ShrubberyCreationForm(target),
+        new RobotomyRequestForm(target),
+        new PresidentialPardonForm(target)
+    };
+    
+    for (int i = 0; i < 3; i++){
+        if (FormName[i] == name) {
+            std::cout << "Intern creates " << name << std::endl;
+            return func[i];
+        }
+    } 
+    throw Intern::FormNotFound();
+};

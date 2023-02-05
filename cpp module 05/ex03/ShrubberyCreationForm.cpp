@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 19:30:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 04:55:58 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 22:40:13 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) {
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
     std::cout << "Copy assainement from ShrubberyCreationForm Class has been called" << std::endl;
-    if (this != &other)
-        this->target = other.target;
+    this->target = other.target;
     return *this;
 };
 
@@ -42,7 +41,7 @@ std::string  ShrubberyCreationForm::getTarget() const {
 };
 
 bool	ShrubberyCreationForm::beSigned(Bureaucrat const &BurObj) {
-    if (BurObj.getGrade() >= 145) {
+    if (BurObj.getGrade() <= 145) {
         return (true);
     }
     else 
@@ -50,7 +49,7 @@ bool	ShrubberyCreationForm::beSigned(Bureaucrat const &BurObj) {
 };
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) {
-    if (beSigned(executor) == true && executor.getGrade() >= 137) {
+    if (beSigned(executor) == true && executor.getGrade() <= 137) {
         std::string name = getTarget() + "_shrubbery";
         std::ofstream file(name);
         if (!file.is_open())

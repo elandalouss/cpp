@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 19:28:35 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 04:48:29 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 22:40:37 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) {;
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm& other) {
     std::cout << "Copy assainement from RobotomyRequestForm Class has been called" << std::endl;
-    if (this != &other)
-        this->target = other.target;
+    this->target = other.target;
     return *this;
 };
 
@@ -42,7 +41,7 @@ std::string RobotomyRequestForm::getTarget() {
 };
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor){
-    if (beSigned(executor) == true && executor.getGrade() >= 45) {
+    if (beSigned(executor) == true && executor.getGrade() <= 45) {
         srand(time(0));
         if (rand() % 2 == 0)
             std::cout << getTarget() << " has been robotomized successfully 50% of the time." << std::endl;
@@ -52,7 +51,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor){
 };
 
 bool	RobotomyRequestForm::beSigned(Bureaucrat const &BurObj) {
-    if (BurObj.getGrade() >= 72)
+    if (BurObj.getGrade() <= 72)
         return (true);
     else 
         throw AForm::GradeTooLowException();

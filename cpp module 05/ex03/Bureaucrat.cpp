@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:47:51 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/04 23:21:35 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 22:22:13 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.name){
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
     std::cout << "Copy assainement operator from Bureaucrat class has been called" << std::endl;
-    if (this != &other)
-        *this = other;
+    this->grade = other.grade;
     return *this;
 };
 

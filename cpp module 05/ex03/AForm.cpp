@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:50:11 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 04:48:53 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:47:48 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ AForm::AForm(const AForm &obj) : grade_Sign(obj.grade_Sign), grade_Exec(obj.grad
 };
 
 AForm &AForm::operator=(const AForm &other) {
-    if (this != &other)
-        *this = other;
+    this->itSigned = other.itSigned;
     return (*this);
 };
 

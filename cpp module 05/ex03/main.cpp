@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:35:41 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 05:33:58 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 22:50:40 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,12 @@ int main() {
     try {
         Intern someRandomIntern;
         AForm* rrf;
-        rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-
+        Bureaucrat a("hello", 1);
+        RobotomyRequestForm  b("hellllllllllllll");
+        rrf = someRandomIntern.makeForm("Shrubbery Creation", "Bender");
+        rrf->execute(a);
+        a.signForm(b);
+        
     } catch(std::exception &e) {
         std::cerr << e.what() << std::endl;
     }

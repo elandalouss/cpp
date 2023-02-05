@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:32:06 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/03 15:13:08 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:19:36 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.name){
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
     std::cout << "Copy assainement operator from Bureaucrat class has been called" << std::endl;
-    if (this != &other)
-        *this = other;
+    this->grade = other.grade;
     return *this;
 };
 
@@ -45,9 +44,9 @@ Bureaucrat::Bureaucrat(std::string e_name, int e_grade)
     std::cout << "Parametrised constructor from Bureaucrat class has been called" << std::endl;
     this->grade = e_grade;
     if (this->grade > 150)
-        throw Bureaucrat::GradeTooHighException();
-    else if (this->grade < 1)
         throw Bureaucrat::GradeTooLowException();
+    else if (this->grade < 1)
+        throw Bureaucrat::GradeTooHighException();
 };    
 
 void Bureaucrat::setGrade(int e_grade) {
@@ -63,19 +62,15 @@ std::string Bureaucrat::getName() const {
 };
 
 void Bureaucrat::increment() {
-    if (this->grade == 1) {
+    if (this->grade == 1)
         throw Bureaucrat::GradeTooHighException();
-    } else {
-        this->grade--;
-    }
+    this->grade--;
 };
 
 void Bureaucrat::decrement() {
-    if (this->grade == 150) {
+    if (this->grade == 150)
         throw Bureaucrat::GradeTooLowException();
-    } else {
-        this->grade++;
-    }
+    this->grade++;
 };
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& obj) {

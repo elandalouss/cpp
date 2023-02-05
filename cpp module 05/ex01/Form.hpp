@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 17:52:45 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/04 18:14:09 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:18:29 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ class Form {
 		~Form();
 		std::string	getName() const;
 		int	getGradeSign() const ;
-		// int	getGradeExec();
+		int	getGradeExec() const ;
 		bool	getSigned() const ;
 		void beSigned(Bureaucrat &BurObj);
 		class GradeTooLowException : public std::exception {
 			public :
-				virtual const char *what () const throw();
+				const char *what () const throw();
 		};
 		class GradeTooHighException : public std::exception {
 			public :
-				virtual const char *what () const throw();
+				const char *what () const throw();
 		};
 };
 

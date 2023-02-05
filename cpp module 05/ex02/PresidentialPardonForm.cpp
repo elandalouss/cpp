@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 18:52:57 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 05:04:30 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/05 23:04:27 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm& other) {
     std::cout << "Copy assainement from PresidentialPardonForm Class has been called" << std::endl;
-    if (this != &other)
-        this->target = other.target;
+    this->target = other.target;
     return *this;
 };
 
@@ -42,16 +41,14 @@ std::string PresidentialPardonForm::getTarget() const {
 };
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) {
-    if (beSigned(executor) == true && executor.getGrade() >= 5)
+    if (beSigned(executor) == true && executor.getGrade() <= 5)
         std::cout << "Informs that " << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
     else
         throw AForm::GradeTooLowException();
 };
 
 bool	PresidentialPardonForm::beSigned(Bureaucrat const &BurObj) {
-    if (BurObj.getGrade() >= 25) {
+    if (BurObj.getGrade() <= 25)
         return (true);
-    }
-    else 
-        throw AForm::GradeTooLowException();
+    throw AForm::GradeTooLowException();
 }
