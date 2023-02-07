@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:04:31 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/07 18:51:47 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:20:37 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,4 @@ int main() {
     std::cout << *bg << std::endl;
     Data *d;
     d = deserialize(a);
-    
-    
 }
