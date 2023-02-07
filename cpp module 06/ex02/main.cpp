@@ -5,28 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 18:35:41 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 23:28:59 by aelandal         ###   ########.fr       */
+/*   Created: 2023/02/07 15:01:36 by aelandal          #+#    #+#             */
+/*   Updated: 2023/02/07 18:10:34 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "AForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-
+#include "file.hpp"
 
 int main() {
-    try {
-
-        Bureaucrat a("ayoub", 1);
-        // ShrubberyCreationForm b("ana lol");
-        // RobotomyRequestForm b("ana lool");
-        ShrubberyCreationForm b("ana loool");
-        b.execute(a);
-
-    } catch(std::exception &e) {
-        std::cerr << e.what() << std::endl;
-    }
+    Base *base = generate();
+    identify(base);
+    Base &base_ref = *base;
+    identify(base_ref);
+    return 0;
 }

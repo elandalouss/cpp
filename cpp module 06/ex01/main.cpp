@@ -5,28 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 18:35:41 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/05 23:28:59 by aelandal         ###   ########.fr       */
+/*   Created: 2023/02/06 15:04:31 by aelandal          #+#    #+#             */
+/*   Updated: 2023/02/07 02:22:53 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "AForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-
+#include "func.hpp"
+// #include <iostream>
 
 int main() {
-    try {
-
-        Bureaucrat a("ayoub", 1);
-        // ShrubberyCreationForm b("ana lol");
-        // RobotomyRequestForm b("ana lool");
-        ShrubberyCreationForm b("ana loool");
-        b.execute(a);
-
-    } catch(std::exception &e) {
-        std::cerr << e.what() << std::endl;
-    }
+    Data *ptr = new Data;
+    ptr->c = 'c';
+    ptr->num = 34;
+    ptr->f = 4.43f;
+    uintptr_t a;
+    a = serialize(ptr);
+    int *bg = reinterpret_cast<int*>(a);
+    std::cout << *bg << std::endl;
 }
