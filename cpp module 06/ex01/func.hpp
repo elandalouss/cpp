@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 15:28:09 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/07 02:20:17 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:30:38 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 typedef struct s_Data
 {
+    float   f;
     int     num;
     char    c;
-    float   f;
 } Data;
 
 uintptr_t serialize(Data* ptr);
