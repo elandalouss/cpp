@@ -6,13 +6,13 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 01:52:31 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/09 05:22:27 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/09 06:16:56 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 
-#define MAX_VAL 5
+#define MAX_VAL 750
 int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
