@@ -5,19 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 00:17:53 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/09 06:36:06 by aelandal         ###   ########.fr       */
+/*   Created: 2023/02/09 19:41:25 by aelandal          #+#    #+#             */
+/*   Updated: 2023/02/09 22:48:41 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
-
-
-void addOne(const int &i) {
-    std::cout << "this : " << i << std::endl;
-}
+#include "easyfind.hpp"
 
 int main() {
-    int arr[] = {6, 34, 2, 7, 0};
-    iter(arr, 5, &addOne);
+    try {
+        std::vector<int> vec;
+        vec.push_back(12);
+        vec.push_back(8);
+        vec.push_back(0);
+        vec.push_back(11);
+        std::cout << ::easyfind(vec, 1234) << std::endl;
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    return 0;
 }
