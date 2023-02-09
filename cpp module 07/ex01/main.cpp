@@ -5,40 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 15:01:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/08 01:01:18 by aelandal         ###   ########.fr       */
+/*   Created: 2023/02/09 00:17:53 by aelandal          #+#    #+#             */
+/*   Updated: 2023/02/09 01:18:47 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "file.hpp"
-#include <iostream>
+#include "iter.hpp"
 
-class Base{
-    virtual void func() {std::cout << "hello" << std::endl;};
-};
-class A : public Base {
-    ;
-};
-class B : public Base {
-    ;
-};
-
+void addOne(int &i) {
+    i++;
+}
 
 int main() {
-    // Base *base = generate();
-    // identify(base);
-    // Base &base_ref = *base;
-    // identify(base_ref);
-    // std::cout << &base_ref << std::endl;
-    // return 0;
-
-    Base *a;
-    a = new Base;
-    
-    A *k;
-    k = new A();
-    // k = dynamic_cast<A*>(a);    
-    B *u;
-    u = dynamic_cast<B*>(k);
-    std::cout << u << std::endl;
+    int arr[] = {6, 34, 2, 7, 0};
+    iter(arr, 5, &addOne);
+    for (int i = 0; i < 5; i++)
+        std::cout << arr[i] << std::endl;
 }

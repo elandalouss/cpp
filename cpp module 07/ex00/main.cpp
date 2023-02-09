@@ -5,40 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 15:01:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/08 01:01:18 by aelandal         ###   ########.fr       */
+/*   Created: 2023/02/08 04:21:56 by aelandal          #+#    #+#             */
+/*   Updated: 2023/02/08 23:51:48 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "file.hpp"
-#include <iostream>
+#include "whatever.hpp"
 
-class Base{
-    virtual void func() {std::cout << "hello" << std::endl;};
-};
-class A : public Base {
-    ;
-};
-class B : public Base {
-    ;
-};
-
-
-int main() {
-    // Base *base = generate();
-    // identify(base);
-    // Base &base_ref = *base;
-    // identify(base_ref);
-    // std::cout << &base_ref << std::endl;
-    // return 0;
-
-    Base *a;
-    a = new Base;
+int main( void ) {
+    int a = 2;
+    int b = 3;
     
-    A *k;
-    k = new A();
-    // k = dynamic_cast<A*>(a);    
-    B *u;
-    u = dynamic_cast<B*>(k);
-    std::cout << u << std::endl;
+    ::swap( a, b );
+    std::cout << "a = " << a << ", b = " << b << std::endl;
+    std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+    std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+    std::string c = "chaine1";
+    std::string d = "chaine2";
+    ::swap(c, d);
+    std::cout << "c = " << c << ", d = " << d << std::endl;
+    std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+    std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+    return 0;
 }
