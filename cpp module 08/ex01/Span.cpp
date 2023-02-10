@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 23:03:20 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/10 06:40:43 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/10 23:44:04 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ unsigned int g_i = 0;
 Span::Span() {
     std::cout << "Default constructor has been called from class Span" << std::endl;  
     arr = new std::vector<int>(0);
-    
 };
 
 Span::Span(unsigned int e_N) : N(e_N) {
@@ -34,22 +33,23 @@ Span::Span(const Span &copy) {
 
 Span&Span::operator=(const Span &copy) {
     this->N = copy.N;
+    for (unsigned int i = 0; i < this->N; i++)
+        this->arr[i] = copy.arr[i];
     return *this;
 };
 
 Span::~Span() {
     std::cout << "Destructor has been called from class Span" << std::endl;  
-    // delete [] arr;
+    delete[] this->arr;
+};
+
+const char* Span::empty::what() const throw() {
+    return ("The vector is empty, or contain only one element");
 };
 
 const char* Span::overFlow::what() const throw() {
-    return ("The vector is fill");
+    return ("Out of range : you pass the limit N");
 };
-
-const char* Span::noHightRange::what() const throw() {
-    return ("there is no highter range");
-};
-
 
 void Span::addNumber(int num) {
     if (g_i >= N) 
@@ -63,34 +63,30 @@ std::vector<int>* Span::getVector() const {
 };
 
 int Span::longestSpan() {
-    int size = arr->size();
-    int res, tmp;
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = 0; j < size - i - 1; j++) {
-            if (arr->at(j) > arr->at(j + 1)) {
-                tmp = arr->at(j);
-                arr->at(j) = arr->at(j + 1);
-                arr->at(j + 1) = tmp;
-            }
-        }
-    }
-    res = arr->at(size - 1) - arr->at(0);
-    if (res == 0)
-        throw noHightRange();
-    return (res);
+	if (arr->size() > 1){  	
+		int size = arr->size(), res;
+		std::vector<int> vec;
+		std::sort(arr->begin(), arr->end());
+		vec.assign(arr->begin(), arr->end());
+		res = arr->at(size - 1) - arr->at(0);
+		return (res);
+	}
+	throw empty();
 };
 
-// int Span::shortestSpan() {
-//     int res = arr->at(0) , size = arr->size();
-//     for (int i = 0; i < size - 1; i++) {
-//         for (int j = 0; j < size - i - 1; j++) {
-//             if (arr->at(j) - arr->at(j + 1) < res && arr->at(j) - arr->at(j + 1) >= 0) {
-//                 if (arr->at(j) - arr->at(j + 1) == 0)
-//                     return (0);
-//                 res = arr->at(j) - arr->at(j + 1) - 1;    
-//             }
-//         }
-//     }      // fuck this code :)
-//     return (res);
-// };
+int Span::shortestSpan() {
+	if (arr->size() > 1){  	
+		unsigned int size = arr->size();
+		int tmp, res = INT_MAX;
+		std::vector<int> vec;
+		std::sort(arr->begin(), arr->end());
+		vec.assign(arr->begin(), arr->end());
+		for (unsigned int i = 0; i + 1 < size; i++) {
+			if ((tmp = abs(vec[i] - vec[i + 1])) < res) {res = tmp;}
+				if (res == 0) {break;}
+		}
+		return (res);
+	}
+	throw empty();
+};
 
