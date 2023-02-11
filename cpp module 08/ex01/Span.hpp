@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 23:03:02 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/10 23:36:40 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/11 02:40:10 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <time.h>
+#include <iterator>
 #include <algorithm>
 #include <exception>
 
 class Span {
     private :
-        std::vector<int>    *arr;
+        std::vector<int>    arr;
         unsigned int         N;
     public :
         Span();
@@ -31,7 +33,8 @@ class Span {
         void addNumber(int num);
         int longestSpan();
         int shortestSpan();
-        std::vector<int>* getVector() const;
+        void ultimateAddNumber(unsigned int max);
+        std::vector<int> getVector() const;
         class overFlow : public std::exception {
             const char* what() const throw();
         };
