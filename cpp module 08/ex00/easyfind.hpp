@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 19:41:27 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/09 22:48:48 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/11 06:46:35 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define EASYFIND_HPP
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 class occurrenceNotFounf : public std::exception {
     const char* what() const throw() {
@@ -23,12 +24,9 @@ class occurrenceNotFounf : public std::exception {
 
 template <typename T>
 T easyfind(const std::vector<T> vec, int occu) {
-    int vecSize = vec.size();
-    for (int i = 0; i < vecSize; i++) {
-        if (vec[i] == occu)
-            return (occu);
-    }
-    throw occurrenceNotFounf();
+    if (find(begin(vec), end(vec), occu) == end(vec))
+        throw occurrenceNotFounf();
+    return (occu);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 23:03:20 by aelandal          #+#    #+#             */
-/*   Updated: 2023/02/11 02:41:38 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/02/11 06:50:42 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ int Span::longestSpan() {
 	if (arr.size() > 1){  	
 		int size = arr.size();
 		std::vector<int> vec;
-		std::sort(arr.begin(), arr.end());
 		vec.assign(arr.begin(), arr.end());
-		return (arr.at(size - 1) - arr.at(0));
+		std::sort(vec.begin(), vec.end());
+		return (vec.at(size - 1) - vec.at(0));
 	}
 	throw empty();
 };
@@ -75,8 +75,8 @@ int Span::shortestSpan() {
 		unsigned int size = arr.size();
 		int tmp, res = INT_MAX;
 		std::vector<int> vec;
-		std::sort(arr.begin(), arr.end());
 		vec.assign(arr.begin(), arr.end());
+		std::sort(vec.begin(), vec.end());
 		for (unsigned int i = 0; i + 1 < size; i++) {
 			if ((tmp = abs(vec[i] - vec[i + 1])) < res) {res = tmp;}
 				if (res == 0) {break;}
