@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:58:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/06 11:57:35 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/06 12:02:50 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ std::map<std::string, float> storeIntoMap(std::ifstream &infile, std::string del
 	std::string line;
 	while (getline(infile, line)) {
 		skipAllWhiteSpaces(line);
-		std::cout << line << std::endl;
 		// check_errors(line_infile);
-		// std::size_t pos = line.find(delemiter);
-		// if (pos != std::string::npos){
-		// 	std::string str = line.substr(pos);
-		// 	float a = atof(str.c_str());
-		// 	my_map[line.substr(0, pos)] = a;
-		// 	// std::cout << "key : " << line.substr(0, pos) << " value : " << a << std::endl;
-		// } else
-		// 	std::cout << "Error: bad input" << std::endl;
+		std::size_t pos = line.find(delemiter);
+		if (pos != std::string::npos){
+			std::string str = line.substr(pos + 1);
+			float a = atof(str.c_str());
+			my_map[line.substr(0, pos)] = a;
+		// std::cout << str << std::endl;
+			std::cout << "key : " << line.substr(0, pos) << " value : " << a << std::endl;
+		} else
+			std::cout << "Error: bad input" << std::endl;
 	}
 	return (my_map);
 }
@@ -64,7 +64,7 @@ int main(int ac, char **av) {
 		std::cerr << "ERROR : File Doesn't Open Successfully Lol" << std::endl;
 		return (0);
 	} else {
-		std::map<std::string, float> dataBaseMap = storeIntoMap(dataBase, ",");
+		// std::map<std::string, float> dataBaseMap = storeIntoMap(dataBase, ",");
 		std::map<std::string, float> infileMap = storeIntoMap(infile, "|");
 	}
 	return 0;
