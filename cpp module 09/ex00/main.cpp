@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:58:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/08 14:34:49 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/08 15:25:52 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool isAllDigit(std::string str) {
 	int countDot = 0;
 	for (int i = 0; str[i]; i++) {
 		if (!isdigit(str[i])) {
-			if (str[i] != '.')
+			if (str[i] != '.' && str[i] != '-')
 				return 0;
 			else {
 				if (str[i] == '.') {
@@ -59,12 +59,14 @@ bool YYYY_MM_DD(std::string date) {
 	}
 	if (atol(year.c_str()) <= 0 || atol(month.c_str()) < 1 || atol(month.c_str()) > 12 
 		|| atol(day.c_str()) < 1 || atol(day.c_str()) > 31 || date[4] != '-' || date[7] != '-')
-		std::cerr << "ERROR : Wrong date" << std::endl;
+		return 0;
 	return 1;
 }
 
-bool check_value(float value) {
-	if (value < 0 || value > 1000)
+int check_value(float value) {
+	if (value < 0)
+		return -1;
+	else if (value > 1000)
 		return 0;
 	return 1;
 }
@@ -117,17 +119,22 @@ int main(int ac, char **av) {
 			else {
 				value = strtod(str.c_str(), NULL);
 				date = line.substr(0, pos - 1);
-				if (YYYY_MM_DD(date) && check_value(value)) {
-					std::map<std::string, float>::iterator it;
-					it = dataBaseMap.upper_bound(date);
-					if (it != dataBaseMap.begin())
-						it--;
-					std::cout << date << " => " << value << " = "  << value * it->second << std::endl;
+				if (YYYY_MM_DD(date)) {
+					if (check_value(value) == 1) {
+						std::map<std::string, float>::iterator it;
+						it = dataBaseMap.upper_bound(date);
+						if (it != dataBaseMap.begin())
+							it--;
+						std::cout << date << " => " << value << " = "  << value * it->second << std::endl;
+					} else if (check_value(value) == -1)
+						std::cerr << "Error: not a positive number." << std::endl;
+					else if (check_value(value) == 0)
+						std::cerr << "Error: too large a number." << std::endl;
 				} else
-					std::cerr << "ERROR : Bad Input" << std::endl;
+					std::cerr << "ERROR : Bad Input => " << date << std::endl;
 			}
 		} else 
-			std::cerr << "Error: on value" << std::endl;
+			std::cerr << "Error: no value" << std::endl;
 	}
 	return 0;
 }
