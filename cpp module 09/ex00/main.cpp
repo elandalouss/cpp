@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:58:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/08 15:25:52 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/08 15:51:00 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,14 @@ bool YYYY_MM_DD(std::string date) {
 	month = date.substr(5, 2);
 	day = date.substr(8, 2);
 	if (!isAllDigit(year) || !isAllDigit(month) || !isAllDigit(day)) {
-		std::cerr << "ERROR : Check Mate" << std::endl;
+		std::cerr << "ERROR : Bad Input => " << date << std::endl;
 		return 0;
 	}
 	if (atol(year.c_str()) <= 0 || atol(month.c_str()) < 1 || atol(month.c_str()) > 12 
-		|| atol(day.c_str()) < 1 || atol(day.c_str()) > 31 || date[4] != '-' || date[7] != '-')
+		|| atol(day.c_str()) < 1 || atol(day.c_str()) > 31 || date[4] != '-' || date[7] != '-') {
+		std::cerr << "ERROR : Bad Input => " << date << std::endl;
 		return 0;
+	}
 	return 1;
 }
 
@@ -130,8 +132,7 @@ int main(int ac, char **av) {
 						std::cerr << "Error: not a positive number." << std::endl;
 					else if (check_value(value) == 0)
 						std::cerr << "Error: too large a number." << std::endl;
-				} else
-					std::cerr << "ERROR : Bad Input => " << date << std::endl;
+				}
 			}
 		} else 
 			std::cerr << "Error: no value" << std::endl;
