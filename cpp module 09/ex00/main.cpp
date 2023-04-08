@@ -6,25 +6,26 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:58:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/08 02:24:54 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/08 12:18:52 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-// bool check_dot(std::string str) {
-// 	int count = 0;
-// 	for (int i = 0; str[i]; i++) {
-// 		if (str[i] == '.') {
-// 			if (str[i])
-// 		}
-// 	}
-// }
-
 bool isAllDigit(std::string str) {
+	int countDot = 0;
 	for (int i = 0; str[i]; i++) {
-		if (!isdigit(str[i]))
-			return 0;
+		if (!isdigit(str[i])) {
+			if (str[i] != '.')
+				return 0;
+			else {
+				if (str[i] == '.') {
+					countDot++;
+					if (i == 0 || i == (int)str.length() - 1 || countDot > 1)
+						return 0;
+				}
+			}
+		}
 	}
 	return 1;
 }
@@ -111,21 +112,18 @@ int main(int ac, char **av) {
 		if (pos != std::string::npos) {
 			str = line.substr(pos + 1);
 			skipAllWhiteSpaces(str);
-			std::cout << str << std::endl;
-			if (!isAllDigit(str)) {
+			if (!isAllDigit(str))
 				std::cerr << "ERROR : the value can contain only numbers" << std::endl;
-				return 0;
+			else {
+				value = atof(str.c_str());
+				date = line.substr(0, pos - 1);
+				if (YYYY_MM_DD(date) && check_value(value)) {
+					// std::cout << dataBaseMap.upper_bound(date) << std::endl;
+				} else {
+					std::cerr << "ERROR : Bad Input" << std::endl;
+				}
 			}
-			value = atof(str.c_str());
-			date = line.substr(0, pos - 1);
-			YYYY_MM_DD(date);
-			// check_value(value);
-			
-			// std::cout << value << " " << date << std::endl;
 		}
 	}
 	return 0;
 }
-
-
-// should handle the dot(.) and the dash(-) of the value, cs when we have a flouting point or a negative number in the value, the function isAllDigit() returns false.
