@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:58:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/08 12:18:52 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/08 13:54:48 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ std::map<std::string, float> storeIntoMap(std::ifstream &infile, std::string del
 		std::size_t pos = line.find(delemiter);
 		if (pos != std::string::npos){
 			str = line.substr(pos + 1);
-			value = atof(str.c_str());
-			key = line.substr(0, pos - 1);
+			value = strtod(str.c_str(), NULL);
+			key = line.substr(0, pos);
 			my_map[key] = value;
 		} else
 			std::cout << "Error: bad input" << std::endl;
@@ -115,10 +115,16 @@ int main(int ac, char **av) {
 			if (!isAllDigit(str))
 				std::cerr << "ERROR : the value can contain only numbers" << std::endl;
 			else {
-				value = atof(str.c_str());
+				value = strtod(str.c_str(), NULL);
+				//std::cout << value << "   " << str << std::endl;
 				date = line.substr(0, pos - 1);
 				if (YYYY_MM_DD(date) && check_value(value)) {
-					// std::cout << dataBaseMap.upper_bound(date) << std::endl;
+					std::map<std::string, float>::iterator it;
+					it = dataBaseMap.upper_bound(date);
+					if (it != dataBaseMap.begin())
+						it--;
+					// std::cout.precision(1);
+					std::cout << date << " => " << value << " = "  << value * it->second << std::endl;
 				} else {
 					std::cerr << "ERROR : Bad Input" << std::endl;
 				}
