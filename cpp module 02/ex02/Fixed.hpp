@@ -19,9 +19,9 @@ class Fixed {
             // assainement operator
         Fixed& operator=(const Fixed& other);
             // comparison operator
-        bool operator==(const Fixed& other);
-        bool operator!=(const Fixed& other);
-        bool operator>=(const Fixed& other);
+            bool operator==(const Fixed& other);
+            bool operator!=(const Fixed& other);
+            bool operator>=(const Fixed& other);
         bool operator<=(const Fixed& other);
         bool operator<(const Fixed& other);
         bool operator>(const Fixed& other);
