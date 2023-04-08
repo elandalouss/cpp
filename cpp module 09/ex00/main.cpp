@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:58:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/08 13:54:48 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/08 14:34:49 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int main(int ac, char **av) {
 		return 0;
 	}
 	if (dataBase.peek() == std::ifstream::traits_type::eof()) {
-		std::cerr << "ERROR : Input file is Impty" << std::endl;
+		std::cerr << "ERROR : dataBase file is Impty" << std::endl;
 		return 0;
 	}
 	std::map<std::string, float> dataBaseMap = storeIntoMap(dataBase, ",");
@@ -116,20 +116,18 @@ int main(int ac, char **av) {
 				std::cerr << "ERROR : the value can contain only numbers" << std::endl;
 			else {
 				value = strtod(str.c_str(), NULL);
-				//std::cout << value << "   " << str << std::endl;
 				date = line.substr(0, pos - 1);
 				if (YYYY_MM_DD(date) && check_value(value)) {
 					std::map<std::string, float>::iterator it;
 					it = dataBaseMap.upper_bound(date);
 					if (it != dataBaseMap.begin())
 						it--;
-					// std::cout.precision(1);
 					std::cout << date << " => " << value << " = "  << value * it->second << std::endl;
-				} else {
+				} else
 					std::cerr << "ERROR : Bad Input" << std::endl;
-				}
 			}
-		}
+		} else 
+			std::cerr << "Error: on value" << std::endl;
 	}
 	return 0;
 }
