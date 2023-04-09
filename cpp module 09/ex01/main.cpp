@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:06:40 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/09 11:18:14 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/09 12:34:13 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,33 @@ int main(int ac, char **av) {
         std::cout << "ERROR : Wromg munber of argument" << std::endl;
         return 0;
     }
-    std::string str = skipSpaces(av[1]);
+    std::string str, string = skipSpaces(av[1]);
     std::stack<int> myStack;
-    // std::stack<int> tmpy;
-    std::string tmp;
-    for (int i = 0; str[i]; i++) {
-        if (isdigit(str[i])) {
-            tmp = str[i];   
-            myStack.push(atoi(tmp.c_str()));
+    int temp;
+    for (int i = 0; string[i]; i++) {
+        if (isdigit(string[i])) {
+            str = string[i];   
+            myStack.push(atoi(str.c_str()));
         }
         else {
-            ;
+            temp = myStack.top();
+            myStack.pop();
+            if (string[i] == '+')
+                temp = myStack.top() + temp;
+            else if (string[i] == '-')
+                temp = myStack.top() - temp;
+            else if (string[i] == '*')
+                temp = myStack.top() * temp;
+            else if (string[i] == '/') {
+                if (temp == 0) {
+                    std::cout << "ERROR : can't devide a number to 0" << std::endl;
+                    return 0;
+                }
+                temp = myStack.top() / temp;
+            }
+            myStack.push(temp);
         }
     }
-    // tmpy = myStack;
-    // while (!tmpy.empty()) {
-    //     std::cout << tmpy.top() << std::endl;
-    //     tmpy.pop();
-    // }
+    std::cout << myStack.top() << std::endl;
     return 0;
 }
