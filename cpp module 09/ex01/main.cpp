@@ -6,24 +6,11 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:06:40 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/09 12:34:13 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/09 12:35:56 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
-
-std::string skipSpaces(char *str) {
-    std::string ret;
-    int i = 0, j = 0;
-    while (str[i]) {
-        if (str[i] != ' ') {
-            ret[j] = str[i];
-            j++;
-        }
-        i++;
-    }
-    return ret;
-}
 
 int main(int ac, char **av) {
     if (ac != 2) {
