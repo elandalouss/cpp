@@ -6,17 +6,26 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:58:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/08 16:00:09 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/16 17:56:08 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+void check_extantion(std::string str) {
+	size_t dot = str.find(".");
+	if (str.substr(dot, str.length()) != ".csv") {
+		std::cerr << "File must be .csv 'FILE.csv'\n";
+		exit(1);
+	}
+}
 
 int main(int ac, char **av) {
 	if (ac != 2) {
 		std::cerr << "ERROR : Wrorng Number Of Argument" << std::endl;
 		return 0;
 	}
+	check_extantion(av[1]);
 	std::ifstream infile(av[1]), dataBase("data.csv");
 	if (!infile || !dataBase){
 		std::cerr << "ERROR : File Doesn't Open Successfully Lol" << std::endl;
@@ -34,6 +43,8 @@ int main(int ac, char **av) {
 	std::size_t pos;
 	float value;
 	while (getline(infile, line)) {
+		if (line.find("date") != std::string::npos || line.find("value") != std::string::npos)
+			getline(infile, line);
 		pos = line.find("|");
 		if (pos != std::string::npos) {
 			str = line.substr(pos + 1);

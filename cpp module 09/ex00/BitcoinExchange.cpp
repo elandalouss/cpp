@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:55:05 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/08 16:00:06 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/16 18:00:06 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ bool YYYY_MM_DD(std::string date) {
 		std::cerr << "ERROR : Bad Input => " << date << std::endl;
 		return 0;
 	}
-	if (atol(year.c_str()) <= 0 || atol(month.c_str()) < 1 || atol(month.c_str()) > 12 
+	if (atol(year.c_str()) < 2009 || atol(year.c_str()) <= 0 || atol(month.c_str()) < 1 || atol(month.c_str()) > 12 
 		|| atol(day.c_str()) < 1 || atol(day.c_str()) > 31 || date[4] != '-' || date[7] != '-') {
 		std::cerr << "ERROR : Bad Input => " << date << std::endl;
 		return 0;
