@@ -6,19 +6,11 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:58:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/16 17:56:08 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/16 18:13:15 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-
-void check_extantion(std::string str) {
-	size_t dot = str.find(".");
-	if (str.substr(dot, str.length()) != ".csv") {
-		std::cerr << "File must be .csv 'FILE.csv'\n";
-		exit(1);
-	}
-}
 
 int main(int ac, char **av) {
 	if (ac != 2) {
@@ -48,6 +40,7 @@ int main(int ac, char **av) {
 		pos = line.find("|");
 		if (pos != std::string::npos) {
 			str = line.substr(pos + 1);
+			std::replace(str.begin(), str.end(), ',', '.');
 			skipAllWhiteSpaces(str);
 			if (!isAllDigit(str))
 				std::cerr << "ERROR : the value can contain only numbers" << std::endl;

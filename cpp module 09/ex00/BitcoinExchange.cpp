@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:55:05 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/16 18:00:06 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/16 18:13:21 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,12 @@ std::map<std::string, float> storeIntoMap(std::ifstream &infile, std::string del
 			std::cout << "Error: bad input" << std::endl;
 	}  
 	return (my_map);
+}
+
+void check_extantion(std::string str) {
+	size_t dot = str.find(".");
+	if (str.substr(dot, str.length()) != ".csv") {
+		std::cerr << "File must be .csv 'FILE.csv'\n";
+		exit(1);
+	}
 }
