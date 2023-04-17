@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:06:40 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/14 09:11:09 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/17 00:48:18 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ int main(int ac, char **av) {
     int temp;
     for (int i = 0; string[i]; i++) {
         if (isdigit(string[i])) {
-            str = string[i];   
+            str = string[i];
             myStack.push(atoi(str.c_str()));
         }
-        else {
+        else if (string[i] != '+' && string[i] != '-' && string[i] != '*' && string[i] != '/') {
+            std::cout << "ERROR\n";
+            exit(1);
+        }
+        else{
             temp = myStack.top();
             myStack.pop();
             if (string[i] == '+')
@@ -41,8 +45,11 @@ int main(int ac, char **av) {
                 }
                 temp = myStack.top() / temp;
             }
+
+            myStack.pop();
             myStack.push(temp);
         }
+            
     }
     std::cout << myStack.top() << std::endl;
     return 0;
