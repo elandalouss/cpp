@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:58:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/16 18:13:15 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/17 04:38:22 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int main(int ac, char **av) {
 		std::cerr << "ERROR : File Doesn't Open Successfully Lol" << std::endl;
 		return (0);
 	} if (infile.peek() == std::ifstream::traits_type::eof()) {
-		std::cerr << "ERROR : Input file is Impty" << std::endl;
+		std::cerr << "ERROR : Input file is Empty" << std::endl;
 		return 0;
 	}
 	if (dataBase.peek() == std::ifstream::traits_type::eof()) {
-		std::cerr << "ERROR : dataBase file is Impty" << std::endl;
+		std::cerr << "ERROR : dataBase file is Empty" << std::endl;
 		return 0;
 	}
 	std::map<std::string, float> dataBaseMap = storeIntoMap(dataBase, ",");

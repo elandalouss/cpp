@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:47:57 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/16 13:33:40 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/17 05:35:07 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 bool isAllDigit(std::string str) {
     for (int i = 0; str[i]; i++) {
         if (isdigit(str[i]) == 0) {
-            std::cout << "-" << str[i] << "-" << std::endl;
             std::cout << "ERROR" << std::endl;
             exit(0);
         }
@@ -32,33 +31,28 @@ void fillVector(std::vector<int>&myVector, char **av) {
     }
 }
 
-void insertSort(std::vector<int>& myVector) {
-    std::vector<int>::iterator itoo, it;
-    int tmp;
-    for (itoo = myVector.begin() + 1; itoo != myVector.end() ; ++itoo)
-        tmp = *itoo;
-        it = itoo - 1;
-    while (it != myVector.begin() && tmp > *it){
-        *it = *(it - 1); 
-        it--;
+void insertSort(std::vector <int> &myVector) {
+    for (std::vector<int>::iterator itoo = myVector.begin() + 1 ; itoo != myVector.end() ; ++itoo) {
+        int key = *itoo;
+        std::vector<int>::iterator tmp = itoo - 1;
+        while (tmp >= myVector.begin() && *tmp > key) {
+            *(tmp + 1) = *tmp;
+            --tmp;
+        }
+        *(tmp + 1) = key;
     }
-    *it = tmp; 
-
 }
+
 void merge_sort(std::vector<int> &myVector, int left, int right) {
     if (right - left + 1 <= 10) {
-        //? impiliment the insertion sort
         insertSort(myVector);
-    for (std::vector<int>::iterator it = myVector.begin(); it != myVector.end(); ++it)
-        std::cout << *it << std::endl;
         return ;
     }
     int middle = left + (right - left) / 2;
     merge_sort(myVector, left, middle);
     merge_sort(myVector, middle + 1, right);
-    for (std::vector<int>::iterator it = myVector.begin(); it != myVector.end(); ++it)
-        std::cout << *it << std::endl;
 }
+
 
 // int main(int ac, char **av) {
 //     if (ac < 2) {
@@ -125,9 +119,14 @@ void merge_sort(std::vector<int> &myVector, int left, int right) {
 // }
 
 int main(int ac, char **av) {
-    (void)ac;
+    if (ac <= 1) {
+        std::cerr << "ERROR ; Wrong number of arguments\n";
+        return 0;
+    }
     std::vector<int> vec;
     fillVector(vec, av);
     merge_sort(vec, 0, vec.size() - 1);
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
+        std::cout << *it << std::endl;
     return 0;
 }
