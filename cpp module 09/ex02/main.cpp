@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:47:57 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/17 05:35:07 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/18 06:31:03 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,28 @@ bool isAllDigit(std::string str) {
     return 1;
 }
 
-void fillVector(std::vector<int>&myVector, char **av) {
+void fillVector(std::vector<long>&myVector, char **av) {
     std::string str;
     for (int i = 1; av[i]; i++) {
         str = av[i];
         if (isAllDigit(str))
-            myVector.push_back(atoi(str.c_str()));
+            myVector.push_back(atol(str.c_str()));
     }
 }
 
-void insertSort(std::vector <int> &myVector) {
-    for (std::vector<int>::iterator itoo = myVector.begin() + 1 ; itoo != myVector.end() ; ++itoo) {
+void fillDeque(std::deque<long>&myDique, char **av) {
+    std::string str;
+    for (int i = 1; av[i]; i++) {
+        str = av[i];
+        if (isAllDigit(str))
+            myDique.push_back(atol(str.c_str()));
+    }
+}
+
+void insertSort_vector(std::vector <long> &myVector) {
+    for (std::vector<long>::iterator itoo = myVector.begin() + 1 ; itoo != myVector.end() ; ++itoo) {
         int key = *itoo;
-        std::vector<int>::iterator tmp = itoo - 1;
+        std::vector<long>::iterator tmp = itoo - 1;
         while (tmp >= myVector.begin() && *tmp > key) {
             *(tmp + 1) = *tmp;
             --tmp;
@@ -43,90 +52,159 @@ void insertSort(std::vector <int> &myVector) {
     }
 }
 
-void merge_sort(std::vector<int> &myVector, int left, int right) {
+void merge_vector(std::vector<long>& vec, int l, int m, int r) {
+    int n1 = m - l + 1;
+    int n2 = r - m;
+    
+    std::vector<long> L(n1), R(n2);
+    for (int i = 0; i < n1; i++)
+        L[i] = vec[l + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = vec[m + 1 + j];
+
+    int i = 0, j = 0, k = l;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            vec[k] = L[i];
+            i++;
+        }
+        else {
+            vec[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        vec[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        vec[k] = R[j];
+        j++;
+        k++;
+    }
+}
+void merge_sort_vector(std::vector<long> &myVector, int left, int right) {
     if (right - left + 1 <= 10) {
-        insertSort(myVector);
+        insertSort_vector(myVector);
         return ;
     }
     int middle = left + (right - left) / 2;
-    merge_sort(myVector, left, middle);
-    merge_sort(myVector, middle + 1, right);
+    merge_sort_vector(myVector, left, middle);
+    merge_sort_vector(myVector, middle + 1, right);
+    merge_vector(myVector, left, middle, right);
 }
 
+void insertSort_deque(std::deque <long> &mydeque) {
+    std::deque<long> result;
+    for (std::deque<long>::iterator it = mydeque.begin(); it != mydeque.end(); ++it) {
+        if (result.empty()) {
+            result.push_back(*it);
+        } else if (*it < result.front()) {
+            result.push_front(*it);
+        } else if (*it > result.back()) {
+            result.push_back(*it);
+        } else {
+            for (std::deque<long>::iterator rit = result.begin(); rit != result.end(); ++rit) {
+                if (*it < *rit) {
+                    result.insert(rit, *it);
+                    break;
+                }
+            }
+        }
+    }
+    mydeque = result;
+}
 
-// int main(int ac, char **av) {
-//     if (ac < 2) {
-//         std::cout << "ERROR : check the number of argument" << std::endl;
-//         return 0;
-//     }
-//     std::vector<int> myVector = fillVector(av);
-//     merge_sort(myVector, 0, myVector.size() -1);
-//     // for (std::vector<int>::iterator it = myVector.begin(); it != myVector.end(); ++it)
-//     //     std::cout << *it << std::endl;
-//     // for (std::vector<int>::iterator it = myVector.begin(); it != myVector.end(); ++it)
-//     //     std::cout << *it << std::endl;
-//     return 0;
-// }
+void merge_deque(std::deque<long>& vec, int l, int m, int r) {
+    int n1 = m - l + 1;
+    int n2 = r - m;
+    
+    std::deque<long> L(n1), R(n2);
+    for (int i = 0; i < n1; i++)
+        L[i] = vec[l + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = vec[m + 1 + j];
 
-// using namespace std;
+    int i = 0, j = 0, k = l;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            vec[k] = L[i];
+            i++;
+        }
+        else {
+            vec[k] = R[j];
+            j++;
+        }
+        k++;
+    }
 
-// void merge(vector<int>& vec, int l, int m, int r) {
-//     int n1 = m - l + 1;
-//     int n2 = r - m;
+    while (i < n1) {
+        vec[k] = L[i];
+        i++;
+        k++;
+    }
 
-//     std::cout << m << std::endl;
-//     vector<int> L(n1), R(n2);
-//     for (int i = 0; i < n1; i++)
-//         L[i] = vec[l + i];
-//     for (int j = 0; j < n2; j++)
-//         R[j] = vec[m + 1 + j];
+    while (j < n2) {
+        vec[k] = R[j];
+        j++;
+        k++;
+    }
+}
+void merge_sort_deque(std::deque<long> &mydeque, int left, int right) {
+    if (right - left + 1 <= 10) {
+        insertSort_deque(mydeque);
+        return ;
+    }
 
-//     int i = 0, j = 0, k = l;
-//     while (i < n1 && j < n2) {
-//         if (L[i] <= R[j]) {
-//             vec[k] = L[i];
-//             i++;
-//         }
-//         else {
-//             vec[k] = R[j];
-//             j++;
-//         }
-//         k++;
-//     }
-
-//     while (i < n1) {
-//         vec[k] = L[i];
-//         i++;
-//         k++;
-//     }
-
-//     while (j < n2) {
-//         vec[k] = R[j];
-//         j++;
-//         k++;
-//     }
-// }
-
-// void mergeSort(vector<int>& vec, int l, int r) {
-//     if (l < r) {
-//         int m = l + (r - l) / 2;
-
-//         mergeSort(vec, l, m);
-//         mergeSort(vec, m + 1, r);
-
-//         merge(vec, l, m, r);
-//     }
-// }
+    int middle = left + (right - left) / 2;
+    merge_sort_deque(mydeque, left, middle);
+    merge_sort_deque(mydeque, middle + 1, right);
+    merge_deque(mydeque, left, middle, right);
+}
 
 int main(int ac, char **av) {
     if (ac <= 1) {
         std::cerr << "ERROR ; Wrong number of arguments\n";
         return 0;
     }
-    std::vector<int> vec;
+    std::vector<long> vec;
+    std::deque<long> deq;
     fillVector(vec, av);
-    merge_sort(vec, 0, vec.size() - 1);
-    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
-        std::cout << *it << std::endl;
+    fillDeque(deq, av);
+    std::cout << "Before : ";
+    for (std::vector<long>::iterator it = vec.begin(); it != vec.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+    std::clock_t startTime, endTime;
+    startTime = clock();
+    merge_sort_vector(vec, 0, vec.size() - 1);
+    endTime = clock();
+    std::cout << "After : ";
+    for (std::vector<long>::iterator it = vec.begin(); it != vec.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+    double totalTime = (double)(endTime - startTime) * 1000000 / CLOCKS_PER_SEC;
+    std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << totalTime << " microseconds\n";
+
+    std::cout << "====================================================================\n";
+    
+    std::cout << "Before : ";
+    for (std::deque<long>::iterator it = deq.begin(); it != deq.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+    startTime = clock();
+    merge_sort_deque(deq, 0, deq.size() - 1);
+    endTime = clock();
+    std::cout << "After : ";
+    for (std::deque<long>::iterator it = deq.begin(); it != deq.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+    totalTime = (double)(endTime - startTime) * 1000000 / CLOCKS_PER_SEC;
+    std::cout << "Time to process a range of " << deq.size() << " elements with std::deque : " << totalTime << " microseconds\n";
+
     return 0;
 }
