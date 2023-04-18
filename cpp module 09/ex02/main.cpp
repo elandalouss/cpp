@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:47:57 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/18 06:31:03 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/18 07:22:49 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void merge_vector(std::vector<long>& vec, int l, int m, int r) {
     }
 }
 void merge_sort_vector(std::vector<long> &myVector, int left, int right) {
-    if (right - left + 1 <= 10) {
+    if (right - left + 1 <= 51) {
         insertSort_vector(myVector);
         return ;
     }
@@ -119,7 +119,7 @@ void insertSort_deque(std::deque <long> &mydeque) {
     mydeque = result;
 }
 
-void merge_deque(std::deque<long>& vec, int l, int m, int r) {
+void merge_deque(std::deque<long>&vec, int l, int m, int r) {
     int n1 = m - l + 1;
     int n2 = r - m;
     
@@ -154,8 +154,9 @@ void merge_deque(std::deque<long>& vec, int l, int m, int r) {
         k++;
     }
 }
+
 void merge_sort_deque(std::deque<long> &mydeque, int left, int right) {
-    if (right - left + 1 <= 10) {
+    if (right - left + 1 <= 51) {
         insertSort_deque(mydeque);
         return ;
     }
