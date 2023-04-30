@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:47:57 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/30 20:22:56 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/30 20:34:31 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int main(int ac, char **av) {
         std::cerr << "ERROR ; Wrong number of arguments\n";
         return 0; 
     }
-    std::vector<long> vec;
-    std::deque<long> deq;
+    std::vector<int> vec;
+    std::deque<int> deq;
     fillVector(vec, av);
     fillDeque(deq, av);
     std::cout << "Before : ";
-    for (std::vector<long>::iterator it = vec.begin(); it != vec.end(); ++it)
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
         std::cout << *it << " ";
     std::cout << std::endl;
     std::clock_t startTime, endTime;
@@ -30,7 +30,7 @@ int main(int ac, char **av) {
     mergeInsertionSortVector(vec);
     endTime = clock();
     std::cout << "_After : ";
-    for (std::vector<long>::iterator it = vec.begin(); it != vec.end(); ++it)
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
         std::cout << *it << " ";
     std::cout << std::endl;
     double totalTime;
@@ -40,14 +40,14 @@ int main(int ac, char **av) {
     std::cout << "=========================================================================\n";
     
     std::cout << "Before : ";
-    for (std::deque<long>::iterator it = deq.begin(); it != deq.end(); ++it)
+    for (std::deque<int>::iterator it = deq.begin(); it != deq.end(); ++it)
         std::cout << *it << " ";
     std::cout << std::endl;
     startTime = clock();
     mergeInsertionSortDeque(deq);
     endTime = clock();
     std::cout << "_After : ";
-    for (std::deque<long>::iterator it = deq.begin(); it != deq.end(); ++it)
+    for (std::deque<int>::iterator it = deq.begin(); it != deq.end(); ++it)
         std::cout << *it << " ";
     std::cout << std::endl;
     totalTime = (double)(endTime - startTime) * 1000000 / CLOCKS_PER_SEC;

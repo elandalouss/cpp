@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 12:48:29 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/30 20:21:59 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/04/30 20:34:31 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,16 @@ bool isAllDigit(std::string str) {
             std::cout << "ERROR" << std::endl;
             exit(0);
         }
+        const char *num = str.c_str();
+        if (atol(num) > INT_MAX) {
+            std::cout << "ERROR : too larg number." << std::endl;
+            exit(0);
+        }
     }
     return 1;
 }
 
-void fillVector(std::vector<long>&vec, char **av) {
+void fillVector(std::vector<int>&vec, char **av) {
     std::string str;
     for (int i = 1; av[i]; i++) {
         str = av[i];
@@ -31,7 +36,7 @@ void fillVector(std::vector<long>&vec, char **av) {
     }
 }
 
-void fillDeque(std::deque<long>&deq, char **av) {
+void fillDeque(std::deque<int>&deq, char **av) {
     std::string str;
     for (int i = 1; av[i]; i++) {
         str = av[i];
@@ -40,7 +45,7 @@ void fillDeque(std::deque<long>&deq, char **av) {
     }
 }
 
-void mergeInsertionSortVector(std::vector<long>& vec) {
+void mergeInsertionSortVector(std::vector<int>& vec) {
     int n = vec.size();
 
     // If std::vector is already sorted or empty, return
@@ -49,8 +54,8 @@ void mergeInsertionSortVector(std::vector<long>& vec) {
     }
 
     // Divide the std::vector into two halves
-    std::vector<long> left;
-    std::vector<long> right;
+    std::vector<int> left;
+    std::vector<int> right;
     for (int i = 0; i < n/2; i++) {
         left.push_back(vec.front());
         vec.erase(vec.begin());
@@ -96,7 +101,7 @@ void mergeInsertionSortVector(std::vector<long>& vec) {
     }
 }
 
-void mergeInsertionSortDeque(std::deque<long>& dq) {
+void mergeInsertionSortDeque(std::deque<int>& dq) {
     int n = dq.size();
 
     // If std::deque is already sorted or empty, return
@@ -105,8 +110,8 @@ void mergeInsertionSortDeque(std::deque<long>& dq) {
     }
 
     // Divide the std::deque into two halves
-    std::deque<long> left;
-    std::deque<long> right;
+    std::deque<int> left;
+    std::deque<int> right;
     for (int i = 0; i < n/2; i++) {
         left.push_back(dq.front());
         dq.pop_front();
