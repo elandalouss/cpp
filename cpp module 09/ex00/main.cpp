@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:58:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/17 04:38:22 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/05/01 22:37:30 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,18 @@ int main(int ac, char **av) {
 			getline(infile, line);
 		pos = line.find("|");
 		if (pos != std::string::npos) {
-			str = line.substr(pos + 1);
+			str = line.substr(pos + 1); // pos + 1
+			if (str[0] != ' '){
+				std::cerr << "ERROR : check syntax" << std::endl;
+				return 0;
+			}
 			std::replace(str.begin(), str.end(), ',', '.');
 			skipAllWhiteSpaces(str);
 			if (!isAllDigit(str))
-				std::cerr << "ERROR : the value can contain only numbers" << std::endl;
+				std::cerr << "ERROR : the value can contain only numbersssss" << std::endl;
 			else {
 				value = strtod(str.c_str(), NULL);
-				date = line.substr(0, pos - 1);
+				date = line.substr(0, pos - 1); // pos - 1
 				if (YYYY_MM_DD(date)) {
 					if (check_value(value) == 1) {
 						std::map<std::string, float>::iterator it;

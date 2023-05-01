@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:55:05 by aelandal          #+#    #+#             */
-/*   Updated: 2023/04/16 18:13:21 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/05/01 22:37:08 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void skipAllWhiteSpaces(std::string &str) {
 	for (std::string::iterator it = str.begin(); it != str.end(); ++it) {
 		if (isspace(*it))
 			it = str.erase(it);
+		else
+			return ;
 	}
 }
 
@@ -41,7 +43,6 @@ bool YYYY_MM_DD(std::string date) {
 	std::string year;
 	std::string month;
 	std::string day;
-
 	if (date.length() != 10) {
 		std::cerr << "ERROR : check syntax" << std::endl;
 		return 0;
