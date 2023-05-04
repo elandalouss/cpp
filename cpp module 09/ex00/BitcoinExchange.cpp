@@ -6,13 +6,13 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:55:05 by aelandal          #+#    #+#             */
-/*   Updated: 2023/05/01 22:37:08 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:05:23 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-bool isAllDigit(std::string str) {
+int isAllDigit(std::string str) {
 	int countDot = 0;
 	for (int i = 0; str[i]; i++) {
 		if (!isdigit(str[i])) {
@@ -23,6 +23,11 @@ bool isAllDigit(std::string str) {
 					countDot++;
 					if (i == 0 || i == (int)str.length() - 1 || countDot > 1)
 						return 0;
+				} if (str[i] == '-') {
+					if (i == 0)
+						return -1;
+					else if (i != 0)
+						return 0;
 				}
 			}
 		}
@@ -30,19 +35,11 @@ bool isAllDigit(std::string str) {
 	return 1;
 }
 
-void skipAllWhiteSpaces(std::string &str) {
-	for (std::string::iterator it = str.begin(); it != str.end(); ++it) {
-		if (isspace(*it))
-			it = str.erase(it);
-		else
-			return ;
-	}
-}
-
 bool YYYY_MM_DD(std::string date) {
 	std::string year;
 	std::string month;
 	std::string day;
+
 	if (date.length() != 10) {
 		std::cerr << "ERROR : check syntax" << std::endl;
 		return 0;
@@ -67,7 +64,7 @@ bool YYYY_MM_DD(std::string date) {
 }
 
 int check_value(float value) {
-	if (value < 0)
+	if (value == 0)
 		return -1;
 	else if (value > 1000)
 		return 0;
@@ -97,4 +94,21 @@ void check_extantion(std::string str) {
 		std::cerr << "File must be .csv 'FILE.csv'\n";
 		exit(1);
 	}
+}
+
+void str_trim(std::string &str) {
+	int i = 0;
+	while (str[i]) {
+		if (::isspace(str[i])) {
+			i++;
+		} else {
+			str.erase(0, i);
+			break;
+		}
+	}
+	i = str.length();
+	while (::isspace(str[i - 1])) {
+		i--;
+	}
+	str.erase(i, str.length());
 }

@@ -68,7 +68,8 @@
         "__functional_base_03": "cpp",
         "__functional_03": "cpp",
         "__tree": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "__memory": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "markdown-image.cloudinary.apiKey": "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"

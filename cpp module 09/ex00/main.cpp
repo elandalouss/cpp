@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:58:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/05/03 02:47:39 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/05/04 22:06:32 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,19 @@ int main(int ac, char **av) {
 	while (getline(infile, line)) {
 		if (line.find("date") != std::string::npos || line.find("value") != std::string::npos)
 			getline(infile, line);
+		str_trim(line);
 		pos = line.find("|");
 		if (pos != std::string::npos) {
 			str = line.substr(pos + 1); // pos + 1
-			if (str[0] != ' '){
-				std::cerr << "ERROR : check syntax" << std::endl;
-				return 0;
-			}
+			str_trim(str);
 			std::replace(str.begin(), str.end(), ',', '.');
-			skipAllWhiteSpaces(str);
-			if (!isAllDigit(str))
-				std::cerr << "ERROR : the value can contain only numbersssss" << std::endl;
+			char *rest;
+			value = strtod(str.c_str(), &rest);
+			if (*rest != '\0')
+				std::cerr << "ERROR : the value can contain only numbers" << std::endl;
 			else {
-				value = strtod(str.c_str(), NULL);
-				date = line.substr(0, pos - 1); // pos - 1
+				date = line.substr(0, pos);
+				str_trim(date);
 				if (YYYY_MM_DD(date)) {
 					if (check_value(value) == 1) {
 						std::map<std::string, float>::iterator it;
@@ -58,14 +57,16 @@ int main(int ac, char **av) {
 						if (it != dataBaseMap.begin())
 							it--;
 						std::cout << date << " => " << value << " = "  << value * it->second << std::endl;
-					} else if (check_value(value) == -1)
-						std::cerr << "Error: not a positive number." << std::endl;
-					else if (check_value(value) == 0)
+					} 
+					else if (check_value(value) == -1)
+						std::cerr << "Error : need a larger number." << std::endl;
+					else if (check_value(value) == 0 || check_value(value) == -1)
 						std::cerr << "Error: too large a number." << std::endl;
-				}
+					}
 			}
 		} else 
 			std::cerr << "Error: no value" << std::endl;
 	}
 	return 0;
 }
+
