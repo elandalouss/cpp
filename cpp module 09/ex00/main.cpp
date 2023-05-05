@@ -6,7 +6,7 @@
 /*   By: aelandal <aelandal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:58:36 by aelandal          #+#    #+#             */
-/*   Updated: 2023/05/04 22:06:32 by aelandal         ###   ########.fr       */
+/*   Updated: 2023/05/05 18:09:14 by aelandal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int main(int ac, char **av) {
 		str_trim(line);
 		pos = line.find("|");
 		if (pos != std::string::npos) {
-			str = line.substr(pos + 1); // pos + 1
+			str = line.substr(pos + 1);
 			str_trim(str);
 			std::replace(str.begin(), str.end(), ',', '.');
 			char *rest;
 			value = strtod(str.c_str(), &rest);
 			if (*rest != '\0')
-				std::cerr << "ERROR : the value can contain only numbers" << std::endl;
+				std::cerr << "ERROR : syntax error" << std::endl;
 			else {
 				date = line.substr(0, pos);
 				str_trim(date);
